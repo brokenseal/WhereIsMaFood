@@ -17,7 +17,7 @@ struct Pin {
 }
 
 
-class SimpleMapManager: NSObject {
+class MapManager: NSObject {
     private let map:MKMapView
 
     var regionRadius: Double
@@ -57,7 +57,7 @@ class SimpleMapManager: NSObject {
     }
 }
 
-extension SimpleMapManager: MKMapViewDelegate {
+extension MapManager: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
         for annotationView in views {
             let button = UIButton(type: .detailDisclosure)

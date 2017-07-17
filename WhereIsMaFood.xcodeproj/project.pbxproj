@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD854A6B1F1D447E000572CC /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD854A6A1F1D447E000572CC /* App.swift */; };
 		ADA279531F17CEA900F9B318 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA279521F17CEA900F9B318 /* AppDelegate.swift */; };
 		ADA279551F17CEA900F9B318 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA279541F17CEA900F9B318 /* ViewController.swift */; };
 		ADA279581F17CEA900F9B318 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADA279561F17CEA900F9B318 /* Main.storyboard */; };
@@ -14,8 +15,9 @@
 		ADA2795D1F17CEA900F9B318 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADA2795B1F17CEA900F9B318 /* LaunchScreen.storyboard */; };
 		ADA279681F17CEAA00F9B318 /* WhereIsMaFoodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA279671F17CEAA00F9B318 /* WhereIsMaFoodTests.swift */; };
 		ADA279731F17CEAA00F9B318 /* WhereIsMaFoodUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA279721F17CEAA00F9B318 /* WhereIsMaFoodUITests.swift */; };
-		ADA279821F17D64100F9B318 /* SimpleMapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA279811F17D64100F9B318 /* SimpleMapManager.swift */; };
-		ADA279841F17D70F00F9B318 /* SimpleAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA279831F17D70F00F9B318 /* SimpleAlert.swift */; };
+		ADA279821F17D64100F9B318 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA279811F17D64100F9B318 /* MapManager.swift */; };
+		ADA279841F17D70F00F9B318 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA279831F17D70F00F9B318 /* AlertManager.swift */; };
+		ADCF87B11F1D3F5900F4188C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADCF87B01F1D3F5900F4188C /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AD854A6A1F1D447E000572CC /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		ADA2794F1F17CEA900F9B318 /* WhereIsMaFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhereIsMaFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADA279521F17CEA900F9B318 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADA279541F17CEA900F9B318 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,8 +52,9 @@
 		ADA2796E1F17CEAA00F9B318 /* WhereIsMaFoodUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhereIsMaFoodUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADA279721F17CEAA00F9B318 /* WhereIsMaFoodUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhereIsMaFoodUITests.swift; sourceTree = "<group>"; };
 		ADA279741F17CEAA00F9B318 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ADA279811F17D64100F9B318 /* SimpleMapManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleMapManager.swift; sourceTree = "<group>"; };
-		ADA279831F17D70F00F9B318 /* SimpleAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleAlert.swift; sourceTree = "<group>"; };
+		ADA279811F17D64100F9B318 /* MapManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
+		ADA279831F17D70F00F9B318 /* AlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
+		ADCF87B01F1D3F5900F4188C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADCF87B11F1D3F5900F4188C /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +83,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AD854A671F1D442D000572CC /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				ADA279591F17CEA900F9B318 /* Assets.xcassets */,
+				ADA279521F17CEA900F9B318 /* AppDelegate.swift */,
+				AD854A691F1D4452000572CC /* Controllers */,
+				AD854A681F1D4438000572CC /* StoryBoards */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		AD854A681F1D4438000572CC /* StoryBoards */ = {
+			isa = PBXGroup;
+			children = (
+				ADA279561F17CEA900F9B318 /* Main.storyboard */,
+				ADA2795B1F17CEA900F9B318 /* LaunchScreen.storyboard */,
+			);
+			name = StoryBoards;
+			sourceTree = "<group>";
+		};
+		AD854A691F1D4452000572CC /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				ADA279541F17CEA900F9B318 /* ViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		ADA279461F17CEA900F9B318 = {
 			isa = PBXGroup;
 			children = (
@@ -85,8 +118,12 @@
 				ADA279661F17CEAA00F9B318 /* WhereIsMaFoodTests */,
 				ADA279711F17CEAA00F9B318 /* WhereIsMaFoodUITests */,
 				ADA279501F17CEA900F9B318 /* Products */,
+				ADCF87AF1F1D3F5900F4188C /* Frameworks */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
+			usesTabs = 0;
 		};
 		ADA279501F17CEA900F9B318 /* Products */ = {
 			isa = PBXGroup;
@@ -101,13 +138,10 @@
 		ADA279511F17CEA900F9B318 /* WhereIsMaFood */ = {
 			isa = PBXGroup;
 			children = (
+				AD854A671F1D442D000572CC /* UI */,
 				ADA279801F17D62400F9B318 /* Utils */,
-				ADA279521F17CEA900F9B318 /* AppDelegate.swift */,
-				ADA279541F17CEA900F9B318 /* ViewController.swift */,
-				ADA279561F17CEA900F9B318 /* Main.storyboard */,
-				ADA279591F17CEA900F9B318 /* Assets.xcassets */,
-				ADA2795B1F17CEA900F9B318 /* LaunchScreen.storyboard */,
 				ADA2795E1F17CEA900F9B318 /* Info.plist */,
+				AD854A6A1F1D447E000572CC /* App.swift */,
 			);
 			path = WhereIsMaFood;
 			sourceTree = "<group>";
@@ -133,10 +167,18 @@
 		ADA279801F17D62400F9B318 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				ADA279811F17D64100F9B318 /* SimpleMapManager.swift */,
-				ADA279831F17D70F00F9B318 /* SimpleAlert.swift */,
+				ADA279811F17D64100F9B318 /* MapManager.swift */,
+				ADA279831F17D70F00F9B318 /* AlertManager.swift */,
 			);
 			name = Utils;
+			sourceTree = "<group>";
+		};
+		ADCF87AF1F1D3F5900F4188C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ADCF87B01F1D3F5900F4188C /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,8 +249,12 @@
 				TargetAttributes = {
 					ADA2794E1F17CEA900F9B318 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 8SAD93VXF8;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					ADA279621F17CEAA00F9B318 = {
 						CreatedOnToolsVersion = 8.3.3;
@@ -225,7 +271,7 @@
 				};
 			};
 			buildConfigurationList = ADA2794A1F17CEA900F9B318 /* Build configuration list for PBXProject "WhereIsMaFood" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -277,8 +323,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADA279551F17CEA900F9B318 /* ViewController.swift in Sources */,
-				ADA279821F17D64100F9B318 /* SimpleMapManager.swift in Sources */,
-				ADA279841F17D70F00F9B318 /* SimpleAlert.swift in Sources */,
+				ADA279821F17D64100F9B318 /* MapManager.swift in Sources */,
+				ADA279841F17D70F00F9B318 /* AlertManager.swift in Sources */,
+				AD854A6B1F1D447E000572CC /* App.swift in Sources */,
 				ADA279531F17CEA900F9B318 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -433,6 +480,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8SAD93VXF8;
 				INFOPLIST_FILE = WhereIsMaFood/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.brokenseal.WhereIsMaFood.WhereIsMaFood;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -446,6 +494,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8SAD93VXF8;
 				INFOPLIST_FILE = WhereIsMaFood/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.brokenseal.WhereIsMaFood.WhereIsMaFood;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -460,6 +509,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 8SAD93VXF8;
 				INFOPLIST_FILE = WhereIsMaFoodTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.brokenseal.WhereIsMaFood.WhereIsMaFoodTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -475,6 +525,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 8SAD93VXF8;
 				INFOPLIST_FILE = WhereIsMaFoodTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.brokenseal.WhereIsMaFood.WhereIsMaFoodTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -487,8 +538,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 8SAD93VXF8;
 				INFOPLIST_FILE = WhereIsMaFoodUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.brokenseal.WhereIsMaFood.WhereIsMaFoodUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -501,8 +554,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 8SAD93VXF8;
 				INFOPLIST_FILE = WhereIsMaFoodUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.brokenseal.WhereIsMaFood.WhereIsMaFoodUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -530,6 +585,7 @@
 				ADA279791F17CEAA00F9B318 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ADA2797A1F17CEAA00F9B318 /* Build configuration list for PBXNativeTarget "WhereIsMaFoodTests" */ = {
 			isa = XCConfigurationList;
@@ -538,6 +594,7 @@
 				ADA2797C1F17CEAA00F9B318 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ADA2797D1F17CEAA00F9B318 /* Build configuration list for PBXNativeTarget "WhereIsMaFoodUITests" */ = {
 			isa = XCConfigurationList;
@@ -546,6 +603,7 @@
 				ADA2797F1F17CEAA00F9B318 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
