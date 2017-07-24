@@ -17,7 +17,7 @@
 		ADA2795A1F17CEA900F9B318 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADA279591F17CEA900F9B318 /* Assets.xcassets */; };
 		ADA2795D1F17CEA900F9B318 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADA2795B1F17CEA900F9B318 /* LaunchScreen.storyboard */; };
 		ADA279821F17D64100F9B318 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA279811F17D64100F9B318 /* MapManager.swift */; };
-		ADA279841F17D70F00F9B318 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA279831F17D70F00F9B318 /* AlertManager.swift */; };
+		ADA279841F17D70F00F9B318 /* AlertsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA279831F17D70F00F9B318 /* AlertsManager.swift */; };
 		ADCF87B11F1D3F5900F4188C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADCF87B01F1D3F5900F4188C /* MapKit.framework */; };
 		ADE77D381F1DD9F400C06C16 /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE77D371F1DD9F400C06C16 /* NotificationsManager.swift */; };
 		ADE77D3A1F20746200C06C16 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE77D391F20746200C06C16 /* Utils.swift */; };
@@ -52,7 +52,7 @@
 		ADA2795C1F17CEA900F9B318 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ADA2795E1F17CEA900F9B318 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADA279811F17D64100F9B318 /* MapManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
-		ADA279831F17D70F00F9B318 /* AlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
+		ADA279831F17D70F00F9B318 /* AlertsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertsManager.swift; sourceTree = "<group>"; };
 		ADCF87B01F1D3F5900F4188C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		ADE77D371F1DD9F400C06C16 /* NotificationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
 		ADE77D391F20746200C06C16 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -156,7 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				ADA279811F17D64100F9B318 /* MapManager.swift */,
-				ADA279831F17D70F00F9B318 /* AlertManager.swift */,
+				ADA279831F17D70F00F9B318 /* AlertsManager.swift */,
 				AD854A671F1D442D000572CC /* UI */,
 				ADA2795E1F17CEA900F9B318 /* Info.plist */,
 				AD854A6A1F1D447E000572CC /* App.swift */,
@@ -395,7 +395,7 @@
 				ADA279821F17D64100F9B318 /* MapManager.swift in Sources */,
 				ADE77D381F1DD9F400C06C16 /* NotificationsManager.swift in Sources */,
 				ADE77D3A1F20746200C06C16 /* Utils.swift in Sources */,
-				ADA279841F17D70F00F9B318 /* AlertManager.swift in Sources */,
+				ADA279841F17D70F00F9B318 /* AlertsManager.swift in Sources */,
 				AD854A6B1F1D447E000572CC /* App.swift in Sources */,
 				ADA279531F17CEA900F9B318 /* AppDelegate.swift in Sources */,
 			);
@@ -594,6 +594,7 @@
 				AD4208D41F22568B00671FE8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ADA2794A1F17CEA900F9B318 /* Build configuration list for PBXProject "WhereIsMaFood" */ = {
 			isa = XCConfigurationList;

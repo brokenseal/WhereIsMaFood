@@ -30,8 +30,11 @@ class Alert {
     alert.addAction(action)
   }
   
-  func show(using viewController: UIViewController, completion: @escaping () -> Void) {
-    viewController.present(alert, animated: true, completion: completion)
+  func show(
+    using viewController: UIViewController? = getTopViewController(),
+    completion: @escaping () -> Void
+    ) {
+    viewController?.present(alert, animated: true, completion: completion)
   }
 }
 

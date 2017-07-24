@@ -25,18 +25,22 @@ final class App {
     }
   }
 
-
-  static func setup(notificationsManager: NotificationCenter) throws -> App {
+  static func setup(
+    notificationsManager: NotificationCenter = NotificationCenter.default
+    ) throws -> App {
     if App.main != nil {
       throw ErrorsManager.appError(nil)
     }
     
-    let app = App(notificationsManager: NotificationCenter.default)
+    let app = App(
+      notificationsManager: notificationsManager
+    )
     App.main = app
     return app
   }
 
   private let notificationsManager: NotificationCenter
+  private var unsubscribers: [Unsubscriber] = []
 
   init(notificationsManager: NotificationCenter) {
     self.notificationsManager = notificationsManager
@@ -50,9 +54,11 @@ final class App {
       using: listener
     )
 
-    return {
+    let unsubscriber = {
       self.notificationsManager.removeObserver(observer)
     }
+    unsubscribers.append(unsubscriber)
+    return unsubscriber
   }
 
   func trigger(_ message: Message, object: Any) {
@@ -60,6 +66,16 @@ final class App {
       name: message.getName(),
       object: object
     )
+  }
+
+  func destroy(){
+    removeAllListeners()
+  }
+
+  private func removeAllListeners(){
+    for unsubscriber in unsubscribers {
+      unsubscriber()
+    }
   }
 }
 

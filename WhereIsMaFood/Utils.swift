@@ -10,28 +10,20 @@ import UIKit
 import Foundation
 
 
-/*
-var top: UIViewController? {
-  get {
-    return topViewController()
-  }
-}
-
 var root: UIViewController? {
   get {
     return UIApplication.shared.delegate?.window??.rootViewController
   }
 }
 
-func topViewController(from viewController: UIViewController? = UIViewController.root) -> UIViewController? {
+func getTopViewController(from viewController: UIViewController? = root) -> UIViewController? {
   if let tabBarViewController = viewController as? UITabBarController {
-    return topViewController(from: tabBarViewController.selectedViewController)
+    return getTopViewController(from: tabBarViewController.selectedViewController)
   } else if let navigationController = viewController as? UINavigationController {
-    return topViewController(from: navigationController.visibleViewController)
+    return getTopViewController(from: navigationController.visibleViewController)
   } else if let presentedViewController = viewController?.presentedViewController {
-    return topViewController(from: presentedViewController)
+    return getTopViewController(from: presentedViewController)
   } else {
     return viewController
   }
 }
-*/
