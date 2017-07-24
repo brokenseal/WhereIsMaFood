@@ -17,7 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Override point for customization after application launch.
     
     do {
-      try app = App.setup(notificationManager: NotificationCenter.default, alertsManager: AlertsManager())
+      try app = App.setup(
+        notificationsManager: NotificationCenter.default
+      )
     } catch {
       fatalError()
     }

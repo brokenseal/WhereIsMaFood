@@ -11,13 +11,13 @@ import Foundation
 
 
 class Alert {
-  private let alert: UIAlertController
+  let alert: UIAlertController
 
-  init(title: String, message: String) {
+  init(title: String, message: String, style: UIAlertControllerStyle?) {
     self.alert = UIAlertController(
       title: title,
       message: message,
-      preferredStyle: UIAlertControllerStyle.alert
+      preferredStyle: style ?? UIAlertControllerStyle.alert
     )
   }
   
@@ -35,16 +35,25 @@ class Alert {
   }
 }
 
-class AlertsManager {
-  func simple(title: String, message: String) -> Alert {
-    let alert = Alert(title: title, message: message)
-    alert.addButton("Ok", style: nil)
-    return alert
+enum AlertsManager {
+  case simple(title: String, message: String)
+  case withCancel(title: String, message: String)
+
+  var alert: Alert {
+    switch self {
+    case .simple(let title, let message):
+      return getAlertWith(title: title, message: message)
+
+    case .withCancel(let title, let message):
+      let alert = getAlertWith(title: title, message: message)
+      alert.addButton("Cancel", style: UIAlertActionStyle.cancel)
+      return alert
+    }
   }
-  
-  func simpleWithCancel(title: String, message: String) -> Alert {
-    let alert = simple(title: title, message: message)
-    alert.addButton("Cancel", style: UIAlertActionStyle.cancel)
+
+  func getAlertWith(title: String, message: String) -> Alert {
+    let alert = Alert(title: title, message: message, style: nil)
+    alert.addButton("Ok", style: nil)
     return alert
   }
 }

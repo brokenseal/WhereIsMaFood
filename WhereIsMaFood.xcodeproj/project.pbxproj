@@ -7,28 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		510151381D369FB667CE1897 /* Pods_WhereIsMaFoodTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 707309EBF3AEFA30D5008199 /* Pods_WhereIsMaFoodTests.framework */; };
+		AAF10C715EA9EC41DE25151F /* Pods_WhereIsMaFood.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5499EC0C2296C03847E0F55F /* Pods_WhereIsMaFood.framework */; };
+		AD4208CE1F22568B00671FE8 /* WhereIsMaFoodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4208CD1F22568B00671FE8 /* WhereIsMaFoodTests.swift */; };
 		AD854A6B1F1D447E000572CC /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD854A6A1F1D447E000572CC /* App.swift */; };
 		ADA279531F17CEA900F9B318 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA279521F17CEA900F9B318 /* AppDelegate.swift */; };
 		ADA279551F17CEA900F9B318 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA279541F17CEA900F9B318 /* ViewController.swift */; };
 		ADA279581F17CEA900F9B318 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADA279561F17CEA900F9B318 /* Main.storyboard */; };
 		ADA2795A1F17CEA900F9B318 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADA279591F17CEA900F9B318 /* Assets.xcassets */; };
 		ADA2795D1F17CEA900F9B318 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADA2795B1F17CEA900F9B318 /* LaunchScreen.storyboard */; };
-		ADA279681F17CEAA00F9B318 /* WhereIsMaFoodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA279671F17CEAA00F9B318 /* WhereIsMaFoodTests.swift */; };
-		ADA279731F17CEAA00F9B318 /* WhereIsMaFoodUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA279721F17CEAA00F9B318 /* WhereIsMaFoodUITests.swift */; };
 		ADA279821F17D64100F9B318 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA279811F17D64100F9B318 /* MapManager.swift */; };
 		ADA279841F17D70F00F9B318 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA279831F17D70F00F9B318 /* AlertManager.swift */; };
 		ADCF87B11F1D3F5900F4188C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADCF87B01F1D3F5900F4188C /* MapKit.framework */; };
+		ADE77D381F1DD9F400C06C16 /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE77D371F1DD9F400C06C16 /* NotificationsManager.swift */; };
+		ADE77D3A1F20746200C06C16 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE77D391F20746200C06C16 /* Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		ADA279641F17CEAA00F9B318 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = ADA279471F17CEA900F9B318 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = ADA2794E1F17CEA900F9B318;
-			remoteInfo = WhereIsMaFood;
-		};
-		ADA2796F1F17CEAA00F9B318 /* PBXContainerItemProxy */ = {
+		AD4208D01F22568B00671FE8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = ADA279471F17CEA900F9B318 /* Project object */;
 			proxyType = 1;
@@ -38,6 +34,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F5B772E4388044FDD50ECB2 /* Pods-WhereIsMaFood.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhereIsMaFood.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WhereIsMaFood/Pods-WhereIsMaFood.debug.xcconfig"; sourceTree = "<group>"; };
+		2263590530F1ABCDFB4E085D /* Pods-WhereIsMaFoodTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhereIsMaFoodTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WhereIsMaFoodTests/Pods-WhereIsMaFoodTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5499EC0C2296C03847E0F55F /* Pods_WhereIsMaFood.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhereIsMaFood.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		707309EBF3AEFA30D5008199 /* Pods_WhereIsMaFoodTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhereIsMaFoodTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		826D2AA0A7D26E92FA1617C7 /* Pods-WhereIsMaFoodTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhereIsMaFoodTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WhereIsMaFoodTests/Pods-WhereIsMaFoodTests.release.xcconfig"; sourceTree = "<group>"; };
+		8832C333F09F1E883E0B9316 /* Pods-WhereIsMaFood.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhereIsMaFood.release.xcconfig"; path = "Pods/Target Support Files/Pods-WhereIsMaFood/Pods-WhereIsMaFood.release.xcconfig"; sourceTree = "<group>"; };
+		AD4208CB1F22568B00671FE8 /* WhereIsMaFoodTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhereIsMaFoodTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD4208CD1F22568B00671FE8 /* WhereIsMaFoodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhereIsMaFoodTests.swift; sourceTree = "<group>"; };
+		AD4208CF1F22568B00671FE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD854A6A1F1D447E000572CC /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		ADA2794F1F17CEA900F9B318 /* WhereIsMaFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhereIsMaFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADA279521F17CEA900F9B318 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -46,43 +51,55 @@
 		ADA279591F17CEA900F9B318 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ADA2795C1F17CEA900F9B318 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ADA2795E1F17CEA900F9B318 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ADA279631F17CEAA00F9B318 /* WhereIsMaFoodTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhereIsMaFoodTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		ADA279671F17CEAA00F9B318 /* WhereIsMaFoodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhereIsMaFoodTests.swift; sourceTree = "<group>"; };
-		ADA279691F17CEAA00F9B318 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ADA2796E1F17CEAA00F9B318 /* WhereIsMaFoodUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhereIsMaFoodUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		ADA279721F17CEAA00F9B318 /* WhereIsMaFoodUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhereIsMaFoodUITests.swift; sourceTree = "<group>"; };
-		ADA279741F17CEAA00F9B318 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADA279811F17D64100F9B318 /* MapManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
 		ADA279831F17D70F00F9B318 /* AlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		ADCF87B01F1D3F5900F4188C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		ADE77D371F1DD9F400C06C16 /* NotificationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
+		ADE77D391F20746200C06C16 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		AE111C773CA3690CD558DAF6 /* Pods_WhereIsMaFood_WhereIsMaFoodTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhereIsMaFood_WhereIsMaFoodTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		AD4208C81F22568B00671FE8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				510151381D369FB667CE1897 /* Pods_WhereIsMaFoodTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ADA2794C1F17CEA900F9B318 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				ADCF87B11F1D3F5900F4188C /* MapKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		ADA279601F17CEAA00F9B318 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		ADA2796B1F17CEAA00F9B318 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				AAF10C715EA9EC41DE25151F /* Pods_WhereIsMaFood.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7271628BEA100DB9344ECDAF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1F5B772E4388044FDD50ECB2 /* Pods-WhereIsMaFood.debug.xcconfig */,
+				8832C333F09F1E883E0B9316 /* Pods-WhereIsMaFood.release.xcconfig */,
+				2263590530F1ABCDFB4E085D /* Pods-WhereIsMaFoodTests.debug.xcconfig */,
+				826D2AA0A7D26E92FA1617C7 /* Pods-WhereIsMaFoodTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		AD4208CC1F22568B00671FE8 /* WhereIsMaFoodTests */ = {
+			isa = PBXGroup;
+			children = (
+				AD4208CD1F22568B00671FE8 /* WhereIsMaFoodTests.swift */,
+				AD4208CF1F22568B00671FE8 /* Info.plist */,
+			);
+			path = WhereIsMaFoodTests;
+			sourceTree = "<group>";
+		};
 		AD854A671F1D442D000572CC /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +107,7 @@
 				ADA279521F17CEA900F9B318 /* AppDelegate.swift */,
 				AD854A691F1D4452000572CC /* Controllers */,
 				AD854A681F1D4438000572CC /* StoryBoards */,
+				ADE77D391F20746200C06C16 /* Utils.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -115,10 +133,10 @@
 			isa = PBXGroup;
 			children = (
 				ADA279511F17CEA900F9B318 /* WhereIsMaFood */,
-				ADA279661F17CEAA00F9B318 /* WhereIsMaFoodTests */,
-				ADA279711F17CEAA00F9B318 /* WhereIsMaFoodUITests */,
+				AD4208CC1F22568B00671FE8 /* WhereIsMaFoodTests */,
 				ADA279501F17CEA900F9B318 /* Products */,
 				ADCF87AF1F1D3F5900F4188C /* Frameworks */,
+				7271628BEA100DB9344ECDAF /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -129,8 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				ADA2794F1F17CEA900F9B318 /* WhereIsMaFood.app */,
-				ADA279631F17CEAA00F9B318 /* WhereIsMaFoodTests.xctest */,
-				ADA2796E1F17CEAA00F9B318 /* WhereIsMaFoodUITests.xctest */,
+				AD4208CB1F22568B00671FE8 /* WhereIsMaFoodTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -138,45 +155,23 @@
 		ADA279511F17CEA900F9B318 /* WhereIsMaFood */ = {
 			isa = PBXGroup;
 			children = (
-				AD854A671F1D442D000572CC /* UI */,
-				ADA279801F17D62400F9B318 /* Utils */,
-				ADA2795E1F17CEA900F9B318 /* Info.plist */,
-				AD854A6A1F1D447E000572CC /* App.swift */,
-			);
-			path = WhereIsMaFood;
-			sourceTree = "<group>";
-		};
-		ADA279661F17CEAA00F9B318 /* WhereIsMaFoodTests */ = {
-			isa = PBXGroup;
-			children = (
-				ADA279671F17CEAA00F9B318 /* WhereIsMaFoodTests.swift */,
-				ADA279691F17CEAA00F9B318 /* Info.plist */,
-			);
-			path = WhereIsMaFoodTests;
-			sourceTree = "<group>";
-		};
-		ADA279711F17CEAA00F9B318 /* WhereIsMaFoodUITests */ = {
-			isa = PBXGroup;
-			children = (
-				ADA279721F17CEAA00F9B318 /* WhereIsMaFoodUITests.swift */,
-				ADA279741F17CEAA00F9B318 /* Info.plist */,
-			);
-			path = WhereIsMaFoodUITests;
-			sourceTree = "<group>";
-		};
-		ADA279801F17D62400F9B318 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
 				ADA279811F17D64100F9B318 /* MapManager.swift */,
 				ADA279831F17D70F00F9B318 /* AlertManager.swift */,
+				AD854A671F1D442D000572CC /* UI */,
+				ADA2795E1F17CEA900F9B318 /* Info.plist */,
+				AD854A6A1F1D447E000572CC /* App.swift */,
+				ADE77D371F1DD9F400C06C16 /* NotificationsManager.swift */,
 			);
-			name = Utils;
+			path = WhereIsMaFood;
 			sourceTree = "<group>";
 		};
 		ADCF87AF1F1D3F5900F4188C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				ADCF87B01F1D3F5900F4188C /* MapKit.framework */,
+				5499EC0C2296C03847E0F55F /* Pods_WhereIsMaFood.framework */,
+				707309EBF3AEFA30D5008199 /* Pods_WhereIsMaFoodTests.framework */,
+				AE111C773CA3690CD558DAF6 /* Pods_WhereIsMaFood_WhereIsMaFoodTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -184,13 +179,37 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		AD4208CA1F22568B00671FE8 /* WhereIsMaFoodTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD4208D21F22568B00671FE8 /* Build configuration list for PBXNativeTarget "WhereIsMaFoodTests" */;
+			buildPhases = (
+				8A11DCE4A86B83A13FB15B90 /* [CP] Check Pods Manifest.lock */,
+				AD4208C71F22568B00671FE8 /* Sources */,
+				AD4208C81F22568B00671FE8 /* Frameworks */,
+				AD4208C91F22568B00671FE8 /* Resources */,
+				036DEAE89FCA7FB5B0B61C57 /* [CP] Embed Pods Frameworks */,
+				A85FC676773330994CD1FB2F /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AD4208D11F22568B00671FE8 /* PBXTargetDependency */,
+			);
+			name = WhereIsMaFoodTests;
+			productName = WhereIsMaFoodTests;
+			productReference = AD4208CB1F22568B00671FE8 /* WhereIsMaFoodTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		ADA2794E1F17CEA900F9B318 /* WhereIsMaFood */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = ADA279771F17CEAA00F9B318 /* Build configuration list for PBXNativeTarget "WhereIsMaFood" */;
 			buildPhases = (
+				7E5DC8F623763EAAD0EECC0E /* [CP] Check Pods Manifest.lock */,
 				ADA2794B1F17CEA900F9B318 /* Sources */,
 				ADA2794C1F17CEA900F9B318 /* Frameworks */,
 				ADA2794D1F17CEA900F9B318 /* Resources */,
+				EF1C2C0C0416E06712841B70 /* [CP] Embed Pods Frameworks */,
+				D2B81B713C50914AD01F8766 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -200,42 +219,6 @@
 			productName = WhereIsMaFood;
 			productReference = ADA2794F1F17CEA900F9B318 /* WhereIsMaFood.app */;
 			productType = "com.apple.product-type.application";
-		};
-		ADA279621F17CEAA00F9B318 /* WhereIsMaFoodTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = ADA2797A1F17CEAA00F9B318 /* Build configuration list for PBXNativeTarget "WhereIsMaFoodTests" */;
-			buildPhases = (
-				ADA2795F1F17CEAA00F9B318 /* Sources */,
-				ADA279601F17CEAA00F9B318 /* Frameworks */,
-				ADA279611F17CEAA00F9B318 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				ADA279651F17CEAA00F9B318 /* PBXTargetDependency */,
-			);
-			name = WhereIsMaFoodTests;
-			productName = WhereIsMaFoodTests;
-			productReference = ADA279631F17CEAA00F9B318 /* WhereIsMaFoodTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		ADA2796D1F17CEAA00F9B318 /* WhereIsMaFoodUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = ADA2797D1F17CEAA00F9B318 /* Build configuration list for PBXNativeTarget "WhereIsMaFoodUITests" */;
-			buildPhases = (
-				ADA2796A1F17CEAA00F9B318 /* Sources */,
-				ADA2796B1F17CEAA00F9B318 /* Frameworks */,
-				ADA2796C1F17CEAA00F9B318 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				ADA279701F17CEAA00F9B318 /* PBXTargetDependency */,
-			);
-			name = WhereIsMaFoodUITests;
-			productName = WhereIsMaFoodUITests;
-			productReference = ADA2796E1F17CEAA00F9B318 /* WhereIsMaFoodUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -247,6 +230,11 @@
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Davide Callegari";
 				TargetAttributes = {
+					AD4208CA1F22568B00671FE8 = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = ADA2794E1F17CEA900F9B318;
+					};
 					ADA2794E1F17CEA900F9B318 = {
 						CreatedOnToolsVersion = 8.3.3;
 						ProvisioningStyle = Automatic;
@@ -255,18 +243,6 @@
 								enabled = 1;
 							};
 						};
-					};
-					ADA279621F17CEAA00F9B318 = {
-						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 8SAD93VXF8;
-						ProvisioningStyle = Automatic;
-						TestTargetID = ADA2794E1F17CEA900F9B318;
-					};
-					ADA2796D1F17CEAA00F9B318 = {
-						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 8SAD93VXF8;
-						ProvisioningStyle = Automatic;
-						TestTargetID = ADA2794E1F17CEA900F9B318;
 					};
 				};
 			};
@@ -284,13 +260,19 @@
 			projectRoot = "";
 			targets = (
 				ADA2794E1F17CEA900F9B318 /* WhereIsMaFood */,
-				ADA279621F17CEAA00F9B318 /* WhereIsMaFoodTests */,
-				ADA2796D1F17CEAA00F9B318 /* WhereIsMaFoodUITests */,
+				AD4208CA1F22568B00671FE8 /* WhereIsMaFoodTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		AD4208C91F22568B00671FE8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ADA2794D1F17CEA900F9B318 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -301,63 +283,131 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		ADA279611F17CEAA00F9B318 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		ADA2796C1F17CEAA00F9B318 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		036DEAE89FCA7FB5B0B61C57 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WhereIsMaFoodTests/Pods-WhereIsMaFoodTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7E5DC8F623763EAAD0EECC0E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8A11DCE4A86B83A13FB15B90 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A85FC676773330994CD1FB2F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WhereIsMaFoodTests/Pods-WhereIsMaFoodTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D2B81B713C50914AD01F8766 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WhereIsMaFood/Pods-WhereIsMaFood-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EF1C2C0C0416E06712841B70 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WhereIsMaFood/Pods-WhereIsMaFood-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		AD4208C71F22568B00671FE8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD4208CE1F22568B00671FE8 /* WhereIsMaFoodTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ADA2794B1F17CEA900F9B318 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				ADA279551F17CEA900F9B318 /* ViewController.swift in Sources */,
 				ADA279821F17D64100F9B318 /* MapManager.swift in Sources */,
+				ADE77D381F1DD9F400C06C16 /* NotificationsManager.swift in Sources */,
+				ADE77D3A1F20746200C06C16 /* Utils.swift in Sources */,
 				ADA279841F17D70F00F9B318 /* AlertManager.swift in Sources */,
 				AD854A6B1F1D447E000572CC /* App.swift in Sources */,
 				ADA279531F17CEA900F9B318 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		ADA2795F1F17CEAA00F9B318 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				ADA279681F17CEAA00F9B318 /* WhereIsMaFoodTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		ADA2796A1F17CEAA00F9B318 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				ADA279731F17CEAA00F9B318 /* WhereIsMaFoodUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		ADA279651F17CEAA00F9B318 /* PBXTargetDependency */ = {
+		AD4208D11F22568B00671FE8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = ADA2794E1F17CEA900F9B318 /* WhereIsMaFood */;
-			targetProxy = ADA279641F17CEAA00F9B318 /* PBXContainerItemProxy */;
-		};
-		ADA279701F17CEAA00F9B318 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = ADA2794E1F17CEA900F9B318 /* WhereIsMaFood */;
-			targetProxy = ADA2796F1F17CEAA00F9B318 /* PBXContainerItemProxy */;
+			targetProxy = AD4208D01F22568B00671FE8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -381,6 +431,36 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		AD4208D31F22568B00671FE8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2263590530F1ABCDFB4E085D /* Pods-WhereIsMaFoodTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 8SAD93VXF8;
+				INFOPLIST_FILE = WhereIsMaFoodTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.brokenseal.WhereIsMaFood.WhereIsMaFoodTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WhereIsMaFood.app/WhereIsMaFood";
+			};
+			name = Debug;
+		};
+		AD4208D41F22568B00671FE8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 826D2AA0A7D26E92FA1617C7 /* Pods-WhereIsMaFoodTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 8SAD93VXF8;
+				INFOPLIST_FILE = WhereIsMaFoodTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.brokenseal.WhereIsMaFood.WhereIsMaFoodTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WhereIsMaFood.app/WhereIsMaFood";
+			};
+			name = Release;
+		};
 		ADA279751F17CEAA00F9B318 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -476,6 +556,7 @@
 		};
 		ADA279781F17CEAA00F9B318 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F5B772E4388044FDD50ECB2 /* Pods-WhereIsMaFood.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8SAD93VXF8;
@@ -490,6 +571,7 @@
 		};
 		ADA279791F17CEAA00F9B318 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8832C333F09F1E883E0B9316 /* Pods-WhereIsMaFood.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8SAD93VXF8;
@@ -502,73 +584,17 @@
 			};
 			name = Release;
 		};
-		ADA2797B1F17CEAA00F9B318 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 8SAD93VXF8;
-				INFOPLIST_FILE = WhereIsMaFoodTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.brokenseal.WhereIsMaFood.WhereIsMaFoodTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WhereIsMaFood.app/WhereIsMaFood";
-			};
-			name = Debug;
-		};
-		ADA2797C1F17CEAA00F9B318 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 8SAD93VXF8;
-				INFOPLIST_FILE = WhereIsMaFoodTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.brokenseal.WhereIsMaFood.WhereIsMaFoodTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WhereIsMaFood.app/WhereIsMaFood";
-			};
-			name = Release;
-		};
-		ADA2797E1F17CEAA00F9B318 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 8SAD93VXF8;
-				INFOPLIST_FILE = WhereIsMaFoodUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.brokenseal.WhereIsMaFood.WhereIsMaFoodUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = WhereIsMaFood;
-			};
-			name = Debug;
-		};
-		ADA2797F1F17CEAA00F9B318 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 8SAD93VXF8;
-				INFOPLIST_FILE = WhereIsMaFoodUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.brokenseal.WhereIsMaFood.WhereIsMaFoodUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = WhereIsMaFood;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		AD4208D21F22568B00671FE8 /* Build configuration list for PBXNativeTarget "WhereIsMaFoodTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD4208D31F22568B00671FE8 /* Debug */,
+				AD4208D41F22568B00671FE8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		ADA2794A1F17CEA900F9B318 /* Build configuration list for PBXProject "WhereIsMaFood" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -583,24 +609,6 @@
 			buildConfigurations = (
 				ADA279781F17CEAA00F9B318 /* Debug */,
 				ADA279791F17CEAA00F9B318 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		ADA2797A1F17CEAA00F9B318 /* Build configuration list for PBXNativeTarget "WhereIsMaFoodTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				ADA2797B1F17CEAA00F9B318 /* Debug */,
-				ADA2797C1F17CEAA00F9B318 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		ADA2797D1F17CEAA00F9B318 /* Build configuration list for PBXNativeTarget "WhereIsMaFoodUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				ADA2797E1F17CEAA00F9B318 /* Debug */,
-				ADA2797F1F17CEAA00F9B318 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

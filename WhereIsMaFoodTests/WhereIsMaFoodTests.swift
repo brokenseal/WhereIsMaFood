@@ -2,33 +2,28 @@
 //  WhereIsMaFoodTests.swift
 //  WhereIsMaFoodTests
 //
-//  Created by Davide Callegari on 13/07/17.
+//  Created by Davide Callegari on 21/07/17.
 //  Copyright © 2017 Davide Callegari. All rights reserved.
 //
 
 import XCTest
+import Nimble
+import Quick
 @testable import WhereIsMaFood
 
-class WhereIsMaFoodTests: XCTestCase {
-  var app: App!
-  
-  override func setUp() {
-    super.setUp()
-    
-    app = App(notificationManager: NotificationsManager, alertsManager: AlertsManager())
-  }
-    
-  override func tearDown() {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    super.tearDown()
-    
-    app = nil
-  }
+class WhereIsMaFoodTests: QuickSpec {
+  override func spec() {
+    describe("App class") {
+      it("acts as a notification router") {
+        let app = App(notificationsManager: NotificationCenter.default)
+        let unsubscriber = app.on(App.Message.warnUser) { notification in
+          let expected = notification.object as! String
+          expect(expected).to(equal("Squee!"))
+        }
 
-  func testApp() {
-    app.notificationsManager.on(app.notificationManager.warnUser) { notification in
-      XCTAssert(notification)
+        app.trigger(App.Message.warnUser, object: "Squee!")
+        unsubscriber()
+      }
     }
-    app.alertsManager.warn(title: "Test", message: "Ok?? Ok!!")
   }
 }

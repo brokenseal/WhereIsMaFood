@@ -10,37 +10,63 @@ import UIKit
 import Foundation
 
 
+typealias Unsubscriber = () -> Void
+typealias Listener = (Notification) -> Void
+
+
 final class App {
   static var main: App?
-  
-  private class notifications {
-    static let showAlert = Notification(name: Notification.Name(rawValue: "showAlert"))
+
+  enum Message: String {
+    case warnUser
+
+    func getName() -> NSNotification.Name {
+      return NSNotification.Name(rawValue: self.rawValue)
+    }
   }
-  
-  static func setup(notificationManager: NotificationsManager, alertsManager: AlertsManager) throws -> App {
+
+
+  static func setup(notificationsManager: NotificationCenter) throws -> App {
     if App.main != nil {
-      throw NSError(domain: "com.brokenseal.AppError", code: 0, userInfo: nil)
+      throw ErrorsManager.appError(nil)
     }
     
-    let app = App(notificationManager: notificationManager, alertsManager: alertsManager)
+    let app = App(notificationsManager: NotificationCenter.default)
     App.main = app
     return app
   }
-  
-  let alertsManager: AlertsManager
-  let notificationManager: NotificationCenter
-  
-  private init(notificationManager: NotificationCenter, alertsManager: AlertsManager) {
-    self.alertsManager = alertsManager
-    self.notificationManager = notificationManager
+
+  private let notificationsManager: NotificationCenter
+
+  init(notificationsManager: NotificationCenter) {
+    self.notificationsManager = notificationsManager
   }
-  
-  private func setupWiring(viewController: UIViewController) {
-    // self.notificationManager.removeObserver(<#T##observer: Any##Any#>)
-    /*self.notificationManager.addObserver(
-      forName: notifications.showAlert.name,
-      object: nil, queue: nil) { notification in
-        print(notification.name)
-      }*/
+
+  func on(_ message: Message, listener: @escaping Listener) -> Unsubscriber {
+    let observer = self.notificationsManager.addObserver(
+      forName: message.getName(),
+      object: nil,
+      queue: OperationQueue.main,
+      using: listener
+    )
+
+    return {
+      self.notificationsManager.removeObserver(observer)
+    }
+  }
+
+  func trigger(_ message: Message, object: Any) {
+    self.notificationsManager.post(
+      name: message.getName(),
+      object: object
+    )
+  }
+}
+
+class ErrorsManager {
+  static let domain = "com.brokenseal.AppError"
+
+  static func appError(_ userInfo: [String: String]?) -> NSError {
+    return NSError(domain: domain, code: 0, userInfo: userInfo)
   }
 }
