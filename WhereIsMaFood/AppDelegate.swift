@@ -17,11 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Override point for customization after application launch.
     
     do {
-      try app = App.setup(
-        notificationsManager: NotificationCenter.default
-      )
+      try app = App.setup()
     } catch {
-      fatalError()
+      fatalError("Unable to instantiate App")
     }
     
     return true

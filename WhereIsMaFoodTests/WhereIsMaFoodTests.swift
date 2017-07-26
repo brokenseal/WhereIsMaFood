@@ -27,13 +27,11 @@ class WhereIsMaFoodTests: QuickSpec {
 
       it("removes all listeners on destroy") {
         let app = App(notificationsManager: NotificationCenter.default)
-        let unsubscriber = app.on(App.Message.warnUser) { notification in
+        let unsubscriber = app.on(App.Message.warnUser) { _ in
           expect(false).to(equal(true))
         }
         app.destroy()
-
         app.trigger(App.Message.warnUser, object: "Squee!")
-        unsubscriber()
       }
     }
   }
