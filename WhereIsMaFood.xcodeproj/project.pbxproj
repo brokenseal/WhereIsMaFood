@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		510151381D369FB667CE1897 /* Pods_WhereIsMaFoodTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 707309EBF3AEFA30D5008199 /* Pods_WhereIsMaFoodTests.framework */; };
 		AAF10C715EA9EC41DE25151F /* Pods_WhereIsMaFood.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5499EC0C2296C03847E0F55F /* Pods_WhereIsMaFood.framework */; };
+		AD34AE761F29AE79002DD9FA /* RestaurantsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD34AE751F29AE79002DD9FA /* RestaurantsDataSource.swift */; };
+		AD34AE7A1F2A4171002DD9FA /* TestUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD34AE791F2A4171002DD9FA /* TestUtils.swift */; };
+		AD34AE7C1F2B0C31002DD9FA /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD34AE7B1F2B0C31002DD9FA /* LocationManager.swift */; };
 		AD4208CE1F22568B00671FE8 /* WhereIsMaFoodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4208CD1F22568B00671FE8 /* WhereIsMaFoodTests.swift */; };
 		AD854A6B1F1D447E000572CC /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD854A6A1F1D447E000572CC /* App.swift */; };
 		ADA279531F17CEA900F9B318 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA279521F17CEA900F9B318 /* AppDelegate.swift */; };
@@ -19,7 +22,6 @@
 		ADA279821F17D64100F9B318 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA279811F17D64100F9B318 /* MapManager.swift */; };
 		ADA279841F17D70F00F9B318 /* AlertsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA279831F17D70F00F9B318 /* AlertsManager.swift */; };
 		ADCF87B11F1D3F5900F4188C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADCF87B01F1D3F5900F4188C /* MapKit.framework */; };
-		ADE77D381F1DD9F400C06C16 /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE77D371F1DD9F400C06C16 /* NotificationsManager.swift */; };
 		ADE77D3A1F20746200C06C16 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE77D391F20746200C06C16 /* Utils.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +42,9 @@
 		707309EBF3AEFA30D5008199 /* Pods_WhereIsMaFoodTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhereIsMaFoodTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		826D2AA0A7D26E92FA1617C7 /* Pods-WhereIsMaFoodTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhereIsMaFoodTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WhereIsMaFoodTests/Pods-WhereIsMaFoodTests.release.xcconfig"; sourceTree = "<group>"; };
 		8832C333F09F1E883E0B9316 /* Pods-WhereIsMaFood.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhereIsMaFood.release.xcconfig"; path = "Pods/Target Support Files/Pods-WhereIsMaFood/Pods-WhereIsMaFood.release.xcconfig"; sourceTree = "<group>"; };
+		AD34AE751F29AE79002DD9FA /* RestaurantsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantsDataSource.swift; sourceTree = "<group>"; };
+		AD34AE791F2A4171002DD9FA /* TestUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestUtils.swift; sourceTree = "<group>"; };
+		AD34AE7B1F2B0C31002DD9FA /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		AD4208CB1F22568B00671FE8 /* WhereIsMaFoodTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhereIsMaFoodTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD4208CD1F22568B00671FE8 /* WhereIsMaFoodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhereIsMaFoodTests.swift; sourceTree = "<group>"; };
 		AD4208CF1F22568B00671FE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -54,7 +59,6 @@
 		ADA279811F17D64100F9B318 /* MapManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
 		ADA279831F17D70F00F9B318 /* AlertsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertsManager.swift; sourceTree = "<group>"; };
 		ADCF87B01F1D3F5900F4188C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		ADE77D371F1DD9F400C06C16 /* NotificationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
 		ADE77D391F20746200C06C16 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		AE111C773CA3690CD558DAF6 /* Pods_WhereIsMaFood_WhereIsMaFoodTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhereIsMaFood_WhereIsMaFoodTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -89,6 +93,16 @@
 				826D2AA0A7D26E92FA1617C7 /* Pods-WhereIsMaFoodTests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		AD34AE7D1F2B8922002DD9FA /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				ADA279811F17D64100F9B318 /* MapManager.swift */,
+				AD34AE7B1F2B0C31002DD9FA /* LocationManager.swift */,
+				ADA279831F17D70F00F9B318 /* AlertsManager.swift */,
+			);
+			name = Managers;
 			sourceTree = "<group>";
 		};
 		AD4208CC1F22568B00671FE8 /* WhereIsMaFoodTests */ = {
@@ -155,12 +169,12 @@
 		ADA279511F17CEA900F9B318 /* WhereIsMaFood */ = {
 			isa = PBXGroup;
 			children = (
-				ADA279811F17D64100F9B318 /* MapManager.swift */,
-				ADA279831F17D70F00F9B318 /* AlertsManager.swift */,
+				AD854A6A1F1D447E000572CC /* App.swift */,
+				AD34AE751F29AE79002DD9FA /* RestaurantsDataSource.swift */,
+				AD34AE7D1F2B8922002DD9FA /* Managers */,
 				AD854A671F1D442D000572CC /* UI */,
 				ADA2795E1F17CEA900F9B318 /* Info.plist */,
-				AD854A6A1F1D447E000572CC /* App.swift */,
-				ADE77D371F1DD9F400C06C16 /* NotificationsManager.swift */,
+				AD34AE791F2A4171002DD9FA /* TestUtils.swift */,
 			);
 			path = WhereIsMaFood;
 			sourceTree = "<group>";
@@ -393,11 +407,13 @@
 			files = (
 				ADA279551F17CEA900F9B318 /* EventListViewController.swift in Sources */,
 				ADA279821F17D64100F9B318 /* MapManager.swift in Sources */,
-				ADE77D381F1DD9F400C06C16 /* NotificationsManager.swift in Sources */,
 				ADE77D3A1F20746200C06C16 /* Utils.swift in Sources */,
+				AD34AE7A1F2A4171002DD9FA /* TestUtils.swift in Sources */,
+				AD34AE761F29AE79002DD9FA /* RestaurantsDataSource.swift in Sources */,
 				ADA279841F17D70F00F9B318 /* AlertsManager.swift in Sources */,
 				AD854A6B1F1D447E000572CC /* App.swift in Sources */,
 				ADA279531F17CEA900F9B318 /* AppDelegate.swift in Sources */,
+				AD34AE7C1F2B0C31002DD9FA /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +454,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 8SAD93VXF8;
 				INFOPLIST_FILE = WhereIsMaFoodTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.brokenseal.WhereIsMaFood.WhereIsMaFoodTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -453,6 +470,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 8SAD93VXF8;
 				INFOPLIST_FILE = WhereIsMaFoodTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.brokenseal.WhereIsMaFood.WhereIsMaFoodTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

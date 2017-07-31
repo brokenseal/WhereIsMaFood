@@ -16,20 +16,27 @@ typealias Listener = (Notification) -> Void
 
 final class App {
   static var main: App?
-
+  
   enum Message: String {
+    // message sent if we want to warn the user about something, possibly showing an alert
     case warnUser
+    // message sent when a new restaurant data set is received by the application
+    case newRestaurantsDataSet
+    // message sent when a new location is received by the core location framework
+    case newLocation
+    // message sent when the authorization status is updated
+    case locationAuthorizationStatusUpdated
 
     func getName() -> NSNotification.Name {
       return NSNotification.Name(rawValue: self.rawValue)
     }
   }
-
+  
   static func setup(
     notificationsManager: NotificationCenter = NotificationCenter.default
     ) throws -> App {
     if App.main != nil {
-      throw ErrorsManager.appError(nil)
+      throw ErrorsManager.appError("App already initialized and setup, App.setup can only be invoked once.")
     }
     
     let app = App(
@@ -82,7 +89,7 @@ final class App {
 class ErrorsManager {
   static let domain = "com.brokenseal.AppError"
 
-  static func appError(_ userInfo: [String: String]?) -> NSError {
-    return NSError(domain: domain, code: 0, userInfo: userInfo)
+  static func appError(_ info: String = "Generic Error") -> NSError {
+    return NSError(domain: domain, code: 0, userInfo: ["Info": info])
   }
 }

@@ -30,11 +30,8 @@ class Alert {
     alert.addAction(action)
   }
   
-  func show(
-    using viewController: UIViewController? = getTopViewController(),
-    completion: @escaping () -> Void
-    ) {
-    viewController?.present(alert, animated: true, completion: completion)
+  func show(using viewController: UIViewController? = getTopViewController()) {
+    viewController?.present(alert, animated: true, completion: nil)
   }
 }
 
@@ -54,7 +51,7 @@ enum AlertsManager {
     }
   }
 
-  func getAlertWith(title: String, message: String) -> Alert {
+  private func getAlertWith(title: String, message: String) -> Alert {
     let alert = Alert(title: title, message: message, style: nil)
     alert.addButton("Ok", style: nil)
     return alert
