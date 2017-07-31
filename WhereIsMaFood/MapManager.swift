@@ -22,7 +22,10 @@ class MapManager: NSObject {
 
   var regionRadius: Double
 
-  init(_ map: MKMapView, regionRadius: Double = 1000.0){
+  init(
+    _ map: MKMapView,
+    regionRadius: Double = 1000.0
+    ){
     self.map = map
     self.regionRadius = regionRadius
     super.init()
@@ -63,8 +66,42 @@ class MapManager: NSObject {
     if map.annotations.count == 0 { return }
     map.removeAnnotations(map.annotations)
   }
+  
+  // MARK: search functionality
+  func search(_ query: String, completion: @escaping (_ error: Error?) -> Void){
+    let searchRequest = MKLocalSearchRequest()
+    searchRequest.naturalLanguageQuery = query
+    searchRequest.region = map.region
+    
+    let localSearch = MKLocalSearch(request: searchRequest)
+    localSearch.start { [weak self] response, error in
+      if let error = error {
+        completion(error)
+        return
+      }
+      
+      if let response = response,
+        let this = self {
+        
+        this.addPins(response.mapItems.map { mapItem in
+          return Pin(
+            title: mapItem.name ?? "Unknown",
+            latitude: mapItem.placemark.coordinate.latitude,
+            longitude: mapItem.placemark.coordinate.longitude
+          )
+        })
+        
+        completion(nil)
+        return
+      }
+      
+      // FIXME: bail out?
+      completion(ErrorsManager.appError())
+    }
+  }
 }
 
+// MARK: map view delegate extension
 extension MapManager: MKMapViewDelegate {
   func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
     for annotationView in views {

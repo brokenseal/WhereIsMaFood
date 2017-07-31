@@ -14,11 +14,12 @@ class RestaurantTableViewController: UITableViewController {
   @IBOutlet weak var searchBar: UISearchBar!
   @IBOutlet weak var mainMap: MKMapView!
   
-  var dataSource: RestaurantsDataSource?
   var unsubscribers: [Unsubscriber] = []
+  
+  var dataSource: RestaurantsDataSource?
   var mapManager: MapManager?
   var locationManager: LocationManager?
-  let alertsManager: AlertsManager! = nil
+  var searchBarManager: SearchBarManager?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -27,12 +28,6 @@ class RestaurantTableViewController: UITableViewController {
     setupManagers()
     
     locationManager!.askUserForPermission()
-  }
-  
-  func setupManagers() {
-    dataSource = RestaurantsDataSource(app: App.main!)
-    mapManager = MapManager(mainMap)
-    locationManager = LocationManager(app: App.main!)
   }
   
   func setupWiring() {
@@ -88,6 +83,23 @@ class RestaurantTableViewController: UITableViewController {
       }
     }
     unsubscribers.append(locationAuthorizationUnsubscriber)
+  }
+  
+  func setupManagers() {
+    dataSource = RestaurantsDataSource(app: App.main!)
+    mapManager = MapManager(mainMap)
+    locationManager = LocationManager(app: App.main!)
+    
+    searchBarManager = SearchBarManager(searchBar) { [weak self] searchText in
+      self?.mapManager?.search(searchText) { error in
+        if error != nil {
+          App.main!.trigger(
+            App.Message.warnUser,
+            object: "Error while searching for restaurant"
+          )
+        }
+      }
+    }
   }
   
   func tearDownUnsubscribers() {

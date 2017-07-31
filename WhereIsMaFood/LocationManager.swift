@@ -6,6 +6,7 @@
 //  Copyright © 2017 Davide Callegari. All rights reserved.
 //
 
+import MapKit
 import Foundation
 import CoreLocation
 
@@ -41,6 +42,10 @@ class LocationManager: NSObject {
   
   func startReceivingLocationUpdates(){
     clLocationManager.startUpdatingLocation()
+  }
+  
+  func stopReceivingLocationsUpdate(){
+    // TODO
   }
 }
 
