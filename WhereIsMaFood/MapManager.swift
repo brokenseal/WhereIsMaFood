@@ -12,8 +12,9 @@ import MapKit
 
 struct Pin {
   let title: String
-  var latitude: Double
-  var longitude: Double
+  let latitude: Double
+  let longitude: Double
+  var selected: Bool
 }
 
 
@@ -31,6 +32,10 @@ class MapManager: NSObject {
     super.init()
   
     map.delegate = self
+  }
+  
+  func getCurrentRegion() -> MKCoordinateRegion {
+    return map.region
   }
 
   func showRegion(latitude: Double, longitude: Double){
@@ -54,50 +59,25 @@ class MapManager: NSObject {
       longitude: pin.longitude
     )
     map.addAnnotation(annotation)
+    
+    if pin.selected == true {
+      map.selectAnnotation(annotation, animated: true)
+    }
   }
-
-  func addPins(_ pinsData: [Pin]){
-    for pinData in pinsData {
-      addPin(Pin(title: pinData.title, latitude: pinData.latitude, longitude: pinData.longitude))
+  
+  func addPins(_ pinsData: [Pin], removeOldPins: Bool = false){
+    if removeOldPins == true {
+      removeAllPins()
+    }
+    
+    for pin in pinsData {
+      addPin(pin)
     }
   }
 
   func removeAllPins(){
     if map.annotations.count == 0 { return }
     map.removeAnnotations(map.annotations)
-  }
-  
-  // MARK: search functionality
-  func search(_ query: String, completion: @escaping (_ error: Error?) -> Void){
-    let searchRequest = MKLocalSearchRequest()
-    searchRequest.naturalLanguageQuery = query
-    searchRequest.region = map.region
-    
-    let localSearch = MKLocalSearch(request: searchRequest)
-    localSearch.start { [weak self] response, error in
-      if let error = error {
-        completion(error)
-        return
-      }
-      
-      if let response = response,
-        let this = self {
-        
-        this.addPins(response.mapItems.map { mapItem in
-          return Pin(
-            title: mapItem.name ?? "Unknown",
-            latitude: mapItem.placemark.coordinate.latitude,
-            longitude: mapItem.placemark.coordinate.longitude
-          )
-        })
-        
-        completion(nil)
-        return
-      }
-      
-      // FIXME: bail out?
-      completion(ErrorsManager.appError())
-    }
   }
 }
 
@@ -109,10 +89,9 @@ extension MapManager: MKMapViewDelegate {
       annotationView.canShowCallout = true
       annotationView.rightCalloutAccessoryView = button
     }
-    /*
-     MKAnnotationView *annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"loc"];
-     annotationView.canShowCallout = YES;
-     annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-     */
+  }
+  
+  func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+    // TODO: select the restaurant ?
   }
 }

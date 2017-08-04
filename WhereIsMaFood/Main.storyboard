@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13147.4"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,30 +21,12 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="eJt-e4-D1Z">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="44" id="PEP-Eo-nZZ"/>
-                                    </constraints>
-                                    <textInputTraits key="textInputTraits"/>
-                                    <connections>
-                                        <outlet property="delegate" destination="Zj3-EF-CU6" id="nLf-Kl-gU7"/>
-                                    </connections>
-                                </searchBar>
-                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" rotateEnabled="NO" showsUserLocation="YES" showsPointsOfInterest="NO" showsTraffic="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NPX-uL-Xns">
-                                    <rect key="frame" x="0.0" y="44" width="375" height="256"/>
+                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" rotateEnabled="NO" showsUserLocation="YES" showsPointsOfInterest="NO" showsTraffic="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NPX-uL-Xns">
+                                    <rect key="frame" x="0.0" y="8" width="375" height="256"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </mapView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="bottom" secondItem="NPX-uL-Xns" secondAttribute="bottom" id="3w6-Bo-WEC"/>
-                                <constraint firstAttribute="trailing" secondItem="eJt-e4-D1Z" secondAttribute="trailing" id="Oga-tB-jIZ"/>
-                                <constraint firstAttribute="trailing" secondItem="NPX-uL-Xns" secondAttribute="trailing" id="bia-wQ-kJ6"/>
-                                <constraint firstItem="NPX-uL-Xns" firstAttribute="leading" secondItem="it5-tO-pd0" secondAttribute="leading" id="hei-lc-yUK"/>
-                                <constraint firstItem="eJt-e4-D1Z" firstAttribute="top" secondItem="it5-tO-pd0" secondAttribute="top" id="kI9-aW-7ef"/>
-                                <constraint firstItem="NPX-uL-Xns" firstAttribute="top" secondItem="eJt-e4-D1Z" secondAttribute="bottom" id="nzY-Jb-xqt"/>
-                                <constraint firstItem="eJt-e4-D1Z" firstAttribute="leading" secondItem="it5-tO-pd0" secondAttribute="leading" id="prP-rN-XWF"/>
-                            </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DefaultCell" id="92b-9f-M21">
@@ -62,18 +45,24 @@
                     </tableView>
                     <connections>
                         <outlet property="mainMap" destination="NPX-uL-Xns" id="EyM-P2-d6P"/>
-                        <outlet property="searchBar" destination="eJt-e4-D1Z" id="wIO-CP-OuS"/>
-                        <outlet property="searchDisplayController" destination="lZq-Rt-dsd" id="Lqk-iq-ZcN"/>
+                        <outlet property="searchDisplayController" destination="u6c-ay-HMd" id="pbq-ib-CTZ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ceL-I1-hUf" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <searchDisplayController id="lZq-Rt-dsd">
                     <connections>
                         <outlet property="delegate" destination="Zj3-EF-CU6" id="O9e-JD-UBT"/>
-                        <outlet property="searchBar" destination="eJt-e4-D1Z" id="wCW-h4-WbL"/>
                         <outlet property="searchContentsController" destination="Zj3-EF-CU6" id="bgf-ct-YKC"/>
                         <outlet property="searchResultsDataSource" destination="Zj3-EF-CU6" id="mN9-4h-47g"/>
                         <outlet property="searchResultsDelegate" destination="Zj3-EF-CU6" id="T9b-rf-0sq"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="u6c-ay-HMd">
+                    <connections>
+                        <outlet property="delegate" destination="Zj3-EF-CU6" id="GRg-9t-VHJ"/>
+                        <outlet property="searchContentsController" destination="Zj3-EF-CU6" id="3sf-T5-K4D"/>
+                        <outlet property="searchResultsDataSource" destination="Zj3-EF-CU6" id="eTx-bj-GH9"/>
+                        <outlet property="searchResultsDelegate" destination="Zj3-EF-CU6" id="TjV-xr-sl9"/>
                     </connections>
                 </searchDisplayController>
             </objects>

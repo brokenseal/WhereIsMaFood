@@ -10,10 +10,10 @@ import MapKit
 import Foundation
 
 
-class RandomRestaurantDataSetGenerator {
+class RandomRestaurantDataSetGenerator: RestaurantDataSetGeneratorProtocol {
   let seed: UInt32
   
-  init(seed: UInt32) {
+  required init(seed: UInt32) {
     // FIXME: seed is actually not used at the moment
     self.seed = seed
     //arc4random(self.seed)
@@ -29,17 +29,23 @@ class RandomRestaurantDataSetGenerator {
       location: CLLocation(
         latitude: 12.0,
         longitude: 12.0
-      )
+      ),
+      selected: false
     )
   }
   
-  func getDataSet(ofLength: Int) -> RestaurantsDataSet {
+  func getDataSet(
+    ofLength: Int,
+    for region: MKCoordinateRegion,
+    searchQuery: String,
+    completion: @escaping (Error?, RestaurantsDataSet?) -> Void
+  ) -> Void {
     var restaurantsDataSet: RestaurantsDataSet = []
     
     for _ in 0...ofLength {
       restaurantsDataSet.append(next())
     }
     
-    return restaurantsDataSet
+    completion(nil, restaurantsDataSet)
   }
 }

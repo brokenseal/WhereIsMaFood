@@ -13,6 +13,7 @@
 		AD34AE7A1F2A4171002DD9FA /* TestUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD34AE791F2A4171002DD9FA /* TestUtils.swift */; };
 		AD34AE7C1F2B0C31002DD9FA /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD34AE7B1F2B0C31002DD9FA /* LocationManager.swift */; };
 		AD4208CE1F22568B00671FE8 /* WhereIsMaFoodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4208CD1F22568B00671FE8 /* WhereIsMaFoodTests.swift */; };
+		AD44BDE51F3066B500D75FA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD44BDE41F3066B400D75FA3 /* Main.storyboard */; };
 		AD854A6B1F1D447E000572CC /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD854A6A1F1D447E000572CC /* App.swift */; };
 		ADA279531F17CEA900F9B318 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA279521F17CEA900F9B318 /* AppDelegate.swift */; };
 		ADA279551F17CEA900F9B318 /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA279541F17CEA900F9B318 /* EventListViewController.swift */; };
@@ -48,6 +49,7 @@
 		AD4208CB1F22568B00671FE8 /* WhereIsMaFoodTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhereIsMaFoodTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD4208CD1F22568B00671FE8 /* WhereIsMaFoodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhereIsMaFoodTests.swift; sourceTree = "<group>"; };
 		AD4208CF1F22568B00671FE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AD44BDE41F3066B400D75FA3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		AD854A6A1F1D447E000572CC /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		ADA2794F1F17CEA900F9B318 /* WhereIsMaFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhereIsMaFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADA279521F17CEA900F9B318 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 		AD854A681F1D4438000572CC /* StoryBoards */ = {
 			isa = PBXGroup;
 			children = (
+				AD44BDE41F3066B400D75FA3 /* Main.storyboard */,
 				ADA2795B1F17CEA900F9B318 /* LaunchScreen.storyboard */,
 			);
 			name = StoryBoards;
@@ -291,6 +294,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD44BDE51F3066B500D75FA3 /* Main.storyboard in Resources */,
 				ADA2795D1F17CEA900F9B318 /* LaunchScreen.storyboard in Resources */,
 				ADA2795A1F17CEA900F9B318 /* Assets.xcassets in Resources */,
 			);
