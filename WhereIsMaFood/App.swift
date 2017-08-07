@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import CoreLocation
 
 
 typealias Unsubscriber = () -> Void
@@ -26,6 +27,8 @@ final class App {
     case newLocation
     // message sent when the authorization status is updated
     case locationAuthorizationStatusUpdated
+    // message sent when an annotation view on a map is selected
+    case annotationViewSelected
 
     func getName() -> NSNotification.Name {
       return NSNotification.Name(rawValue: self.rawValue)
@@ -53,7 +56,10 @@ final class App {
     self.notificationsManager = notificationsManager
   }
 
-  func on(_ message: Message, listener: @escaping Listener) -> Unsubscriber {
+  func on(
+    _ message: Message,
+    listener: @escaping Listener
+  ) -> Unsubscriber {
     let observer = self.notificationsManager.addObserver(
       forName: message.getName(),
       object: nil,
@@ -67,6 +73,21 @@ final class App {
     unsubscribers.append(unsubscriber)
     return unsubscriber
   }
+  
+  func once(
+    _ message: Message,
+    listener: @escaping Listener
+  ) -> Unsubscriber {
+    var count = 0
+    
+    let unsubscriber = on(message) { notification in
+      if count == 0 {
+        listener(notification)
+      }
+      count += 1
+    }
+    return unsubscriber
+  }
 
   func trigger(_ message: Message, object: Any) {
     self.notificationsManager.post(
@@ -75,7 +96,7 @@ final class App {
     )
   }
 
-  func destroy(){
+  func tearDown(){
     removeAllListeners()
   }
 

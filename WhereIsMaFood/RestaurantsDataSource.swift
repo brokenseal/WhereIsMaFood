@@ -32,11 +32,29 @@ class RestaurantsDataSource {
   }
   
   func selectRestaurantData(at: Int) {
-    var current = currentDataSet[at]
-    current.selected = true
-    currentDataSet[at] = current
+    let selected = currentDataSet[at]
+    
+    currentDataSet = currentDataSet.map { dataSet in
+      if dataSet == selected {
+        return dataSet.clone(selected: true)
+      } else {
+        return dataSet.clone(selected: false)
+      }
+    }
   }
   
+  func select(_ restauranData: RestaurantData) {
+    let toBeSelected = restauranData
+    
+    currentDataSet = currentDataSet.map { dataSet in
+      if dataSet == toBeSelected {
+        return dataSet.clone(selected: true)
+      } else {
+        return dataSet.clone(selected: false)
+      }
+    }
+  }
+
   func updateData(
     for region: MKCoordinateRegion,
     searchQuery: String = ""
@@ -62,12 +80,31 @@ class RestaurantsDataSource {
   }
 }
 
-struct RestaurantData {
+struct RestaurantData: Equatable {
   let name: String
   let type: String
   let shortDescription: String
   let location: CLLocation
   var selected: Bool
+  
+  static func == (
+    lhs: RestaurantData,
+    rhs: RestaurantData
+  ) -> Bool {
+    return lhs.name == rhs.name
+      && lhs.type == rhs.type
+      && lhs.shortDescription == rhs.shortDescription
+  }
+  
+  func clone(selected: Bool?) -> RestaurantData {
+    return RestaurantData(
+      name: name,
+      type: type,
+      shortDescription: shortDescription,
+      location: location,
+      selected: selected ?? self.selected
+    )
+  }
 }
 
 typealias RestaurantsDataSet = [RestaurantData]

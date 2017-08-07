@@ -13,6 +13,8 @@ import CoreLocation
 
 class LocationManager: NSObject {
   private let clLocationManager = CLLocationManager()
+  var lastLocation: CLLocation?
+  
   let app: App
   
   init(app: App) {
@@ -45,10 +47,9 @@ class LocationManager: NSObject {
   }
   
   func stopReceivingLocationsUpdate(){
-    // TODO
+    clLocationManager.stopUpdatingLocation()
   }
 }
-
 
 extension LocationManager: CLLocationManagerDelegate {
   func locationManager(
@@ -61,8 +62,9 @@ extension LocationManager: CLLocationManagerDelegate {
   func locationManager(
     _ manager: CLLocationManager,
     didUpdateLocations locations: [CLLocation]
-    ) {
+  ) {
     if let location = locations.last {
+      lastLocation = location
       app.trigger(App.Message.newLocation, object: location)
     }
   }

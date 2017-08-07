@@ -15,6 +15,7 @@ typealias SearchBarManagerTextDidChangeListener = (_ searchText: String) -> Void
 class SearchBarManager: NSObject {
   private let searchBar: UISearchBar
   let textDidChangeListener:SearchBarManagerTextDidChangeListener
+  var lastSearchQuery: String = ""
   
   init(
     _ searchBar: UISearchBar,
@@ -31,7 +32,12 @@ class SearchBarManager: NSObject {
 
 
 extension SearchBarManager: UISearchBarDelegate {
-  func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-    textDidChangeListener(searchText)
+  func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    searchBar.resignFirstResponder()
+  }
+  func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+    searchBar.resignFirstResponder()
+    lastSearchQuery = searchBar.text ?? ""
+    textDidChangeListener(lastSearchQuery)
   }
 }

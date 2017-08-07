@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  RestaurantTableViewController
 //  WhereIsMaFood
 //
 //  Created by Davide Callegari on 13/07/17.
@@ -13,21 +13,51 @@ import MapKit
 class RestaurantTableViewController: UITableViewController {
   //@IBOutlet weak var searchBar: UISearchBar!
   @IBOutlet weak var mainMap: MKMapView!
+  @IBOutlet weak var searchBar: UISearchBar!
   
   var unsubscribers: [Unsubscriber] = []
   
   var dataSource: RestaurantsDataSource?
   var mapManager: MapManager?
   var locationManager: LocationManager?
-  //var searchBarManager: SearchBarManager?
+  var searchBarManager: SearchBarManager?
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    setup()
+  }
+  
+  func setup(){
+    setupRefreshController()
     setupWiring()
     setupManagers()
+    dataSource = RestaurantsDataSource(
+      app: App.main!,
+      dataGenerator: MKRestaurantDataSetGenerator()
+    )
     
     locationManager!.askUserForPermission()
+  }
+  
+  func setupRefreshController(){
+    refreshControl = UIRefreshControl()
+    refreshControl!.addTarget(
+      self,
+      action: #selector(RestaurantTableViewController.refreshTable),
+      for: .valueChanged
+    )
+  }
+  
+  func refreshTable(){
+    // FIXME: bail out?
+    guard let mapManager = mapManager,
+      let dataSource = dataSource,
+      let searchBarManager = searchBarManager else { return }
+    
+    dataSource.updateData(
+      for: mapManager.getCurrentRegion(),
+      searchQuery: searchBarManager.lastSearchQuery
+    )
   }
   
   func setupWiring() {
@@ -35,32 +65,28 @@ class RestaurantTableViewController: UITableViewController {
     tearDownUnsubscribers()
     
     // LISTENER: update table data when new restaurants data is received
-    let dataSourceUnsubscriber = App.main!.on(App.Message.newRestaurantsDataSet) { [weak self] _ in
-      print("new restaurant data!")
+    let dataSourceUnsubscriber = App.main!.on(
+      App.Message.newRestaurantsDataSet
+    ) { [weak self] _ in
       self?.tableView.reloadData()
       self?.showRestaurantsOnMap()
+      self?.refreshControl?.endRefreshing()
     }
     unsubscribers.append(dataSourceUnsubscriber)
     
-    // LISTENER: update map when a new location is received
-    let newLocationUnsubscriber = App.main!.on(App.Message.newLocation) { [weak self] notification in
+    // LISTENER: update map when a new location is received, but only once, at the beginning
+    let newLocationUnsubscriber = App.main!.once(
+      App.Message.newLocation
+    ) { [weak self] notification in
       // FIXME: bail out?
-      guard
-        let location = notification.object as? CLLocation,
-        let mapManager = self?.mapManager,
-        let dataSource = self?.dataSource
-        else { return }
-      
-      print("new location: \(location)")
+      guard let location = notification.object as? CLLocation,
+        let mapManager = self?.mapManager else { return }
       
       mapManager.showRegion(
         latitude: location.coordinate.latitude,
         longitude: location.coordinate.longitude
       )
-      dataSource.updateData(
-        for: mapManager.getCurrentRegion(),
-        searchQuery: ""
-      )
+      self?.refreshTable()
     }
     unsubscribers.append(newLocationUnsubscriber)
     
@@ -69,13 +95,10 @@ class RestaurantTableViewController: UITableViewController {
       // FIXME: bail out?
       guard let message = notification.object as? String else { return }
       
-      print("new alert")
-      let alert = AlertsManager.simple(
+      AlertsManager.simple(
         title: "Warning!",
         message: message
-      ).alert
-      
-      alert.show(using: self)
+      ).alert.show(using: self)
     }
     unsubscribers.append(alertsUnsubscriber)
     
@@ -97,15 +120,39 @@ class RestaurantTableViewController: UITableViewController {
       }
     }
     unsubscribers.append(locationAuthorizationUnsubscriber)
+    
+    let viewAnnotationUnsubscriber = App.main!.on(
+      App.Message.annotationViewSelected
+    ) { [weak self] notification in
+      // FIXME: bail out?
+      guard let annotationView = notification.object as? MKAnnotationView,
+        let mapManager = self?.mapManager,
+        let annotation = annotationView.annotation else { return }
+      
+      let pin = mapManager.getPinFromAnnotation(
+        annotation: annotation
+      )
+      
+      print("pin!!")
+
+      guard let this = self,
+        let dataSource = this.dataSource,
+        let daPin = pin,
+        let restaurantData = daPin.rawData as? RestaurantData
+        else { return }
+      
+      print("pin!!: \(daPin)")
+      dataSource.select(restaurantData)
+    }
+    unsubscribers.append(viewAnnotationUnsubscriber)
   }
-  
+
   func setupManagers() {
-    dataSource = RestaurantsDataSource(
-      app: App.main!,
-      dataGenerator: MKRestaurantDataSetGenerator()
-    )
     mapManager = MapManager(mainMap)
     locationManager = LocationManager(app: App.main!)
+    searchBarManager = SearchBarManager(searchBar) { [weak self] _ in
+      self?.refreshTable()
+    }
   }
   
   func tearDownUnsubscribers() {
@@ -126,10 +173,11 @@ class RestaurantTableViewController: UITableViewController {
         title: restaurantData.name,
         latitude: restaurantData.location.coordinate.latitude,
         longitude: restaurantData.location.coordinate.longitude,
+        rawData: restaurantData,
         selected: restaurantData.selected
       )
     }
-    mapManager.addPins(pinsData, removeOldPins: true)
+    mapManager.addPins(pinsData)
   }
   
   override func viewWillDisappear(_ animated: Bool) {
@@ -140,6 +188,13 @@ class RestaurantTableViewController: UITableViewController {
     let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell")!
     let restaurantData = dataSource!.currentDataSet[indexPath.row]
     cell.textLabel?.text = restaurantData.name
+    
+    if restaurantData.selected == true {
+      cell.backgroundColor = UIColor.brown
+    } else {
+      cell.backgroundColor = UIColor.white
+    }
+    
     return cell
   }
   
@@ -149,7 +204,8 @@ class RestaurantTableViewController: UITableViewController {
 
   override func tableView(
     _ tableView: UITableView,
-    numberOfRowsInSection section: Int) -> Int {
+    numberOfRowsInSection section: Int
+  ) -> Int {
     return dataSource!.currentDataSet.count
   }
 

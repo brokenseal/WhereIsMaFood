@@ -14,19 +14,20 @@ struct Pin {
   let title: String
   let latitude: Double
   let longitude: Double
+  let rawData: Any?
   var selected: Bool
 }
 
-
 class MapManager: NSObject {
   private let map:MKMapView
+  private var managedPins: [(Pin, MKAnnotation)] = []
 
   var regionRadius: Double
 
   init(
     _ map: MKMapView,
     regionRadius: Double = 1000.0
-    ){
+  ){
     self.map = map
     self.regionRadius = regionRadius
     super.init()
@@ -63,9 +64,10 @@ class MapManager: NSObject {
     if pin.selected == true {
       map.selectAnnotation(annotation, animated: true)
     }
+    managedPins.append((pin, annotation))
   }
   
-  func addPins(_ pinsData: [Pin], removeOldPins: Bool = false){
+  func addPins(_ pinsData: [Pin], removeOldPins: Bool = true){
     if removeOldPins == true {
       removeAllPins()
     }
@@ -76,8 +78,19 @@ class MapManager: NSObject {
   }
 
   func removeAllPins(){
+    managedPins = []
     if map.annotations.count == 0 { return }
     map.removeAnnotations(map.annotations)
+  }
+  
+  func getPinFromAnnotation(annotation: MKAnnotation) -> Pin? {
+    for managedPin in managedPins {
+      if managedPin.1 === annotation {
+        return managedPin.0
+      }
+    }
+    
+    return nil
   }
 }
 
@@ -92,6 +105,6 @@ extension MapManager: MKMapViewDelegate {
   }
   
   func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-    // TODO: select the restaurant ?
+    App.main!.trigger(App.Message.annotationViewSelected, object: view)
   }
 }
