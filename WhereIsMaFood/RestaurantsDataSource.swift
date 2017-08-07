@@ -85,6 +85,7 @@ struct RestaurantData: Equatable {
   let type: String
   let shortDescription: String
   let location: CLLocation
+  let url: URL?
   var selected: Bool
   
   static func == (
@@ -94,6 +95,7 @@ struct RestaurantData: Equatable {
     return lhs.name == rhs.name
       && lhs.type == rhs.type
       && lhs.shortDescription == rhs.shortDescription
+      && lhs.url == rhs.url
   }
   
   func clone(selected: Bool?) -> RestaurantData {
@@ -102,6 +104,7 @@ struct RestaurantData: Equatable {
       type: type,
       shortDescription: shortDescription,
       location: location,
+      url: url,
       selected: selected ?? self.selected
     )
   }
@@ -143,6 +146,7 @@ class MKRestaurantDataSetGenerator: RestaurantDataSetGeneratorProtocol {
               latitude: mapItem.placemark.coordinate.latitude,
               longitude: mapItem.placemark.coordinate.longitude
             ),
+            url: mapItem.url,
             selected: false
           )
         }

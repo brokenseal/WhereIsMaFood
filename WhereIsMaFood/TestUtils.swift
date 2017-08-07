@@ -30,6 +30,7 @@ class RandomRestaurantDataSetGenerator: RestaurantDataSetGeneratorProtocol {
         latitude: 12.0,
         longitude: 12.0
       ),
+      url: nil,
       selected: false
     )
   }

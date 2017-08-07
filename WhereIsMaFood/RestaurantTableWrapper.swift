@@ -1,8 +1,8 @@
 //
-//  RestaurantTableViewController
+//  RestaurantTableWrapper.swift
 //  WhereIsMaFood
 //
-//  Created by Davide Callegari on 13/07/17.
+//  Created by Davide Callegari on 07/08/17.
 //  Copyright © 2017 Davide Callegari. All rights reserved.
 //
 
@@ -10,40 +10,56 @@ import UIKit
 import MapKit
 
 
-class RestaurantTableViewController: UITableViewController {
-  //@IBOutlet weak var searchBar: UISearchBar!
+class RestaurantTableWrapper: UIViewController {
   @IBOutlet weak var mainMap: MKMapView!
   @IBOutlet weak var searchBar: UISearchBar!
+  @IBOutlet weak var restaurantTableContainer: UIView!
   
   var unsubscribers: [Unsubscriber] = []
-  
   var dataSource: RestaurantsDataSource?
   var mapManager: MapManager?
   var locationManager: LocationManager?
   var searchBarManager: SearchBarManager?
+  lazy var restaurantTableViewController: RestaurantTableViewController = { [unowned self] in
+    return self.childViewControllers[0] as! RestaurantTableViewController
+  }()
   
   override func viewDidLoad() {
     super.viewDidLoad()
     setup()
+    start()
   }
   
-  func setup(){
-    setupRefreshController()
-    setupWiring()
+  func setup() {
     setupManagers()
+    setupRefreshController()
+    setupListeners()
     dataSource = RestaurantsDataSource(
       app: App.main!,
       dataGenerator: MKRestaurantDataSetGenerator()
     )
-    
+    restaurantTableViewController.setup(
+      dataSource: dataSource!
+    )
+  }
+  
+  func start(){
     locationManager!.askUserForPermission()
+  }
+
+  func setupManagers() {
+    mapManager = MapManager(mainMap)
+    locationManager = LocationManager(app: App.main!)
+    searchBarManager = SearchBarManager(searchBar) { [weak self] _ in
+      self?.refreshTable()
+    }
   }
   
   func setupRefreshController(){
-    refreshControl = UIRefreshControl()
-    refreshControl!.addTarget(
+    restaurantTableViewController.refreshControl = UIRefreshControl()
+    restaurantTableViewController.refreshControl!.addTarget(
       self,
-      action: #selector(RestaurantTableViewController.refreshTable),
+      action: #selector(RestaurantTableWrapper.refreshTable),
       for: .valueChanged
     )
   }
@@ -52,15 +68,50 @@ class RestaurantTableViewController: UITableViewController {
     // FIXME: bail out?
     guard let mapManager = mapManager,
       let dataSource = dataSource,
-      let searchBarManager = searchBarManager else { return }
+      let searchBarManager = searchBarManager,
+      let locationManager = locationManager,
+      let location = locationManager.lastLocation else { return }
+    
+    mapManager.showRegion(
+      latitude: location.coordinate.latitude,
+      longitude: location.coordinate.longitude
+    )
     
     dataSource.updateData(
       for: mapManager.getCurrentRegion(),
       searchQuery: searchBarManager.lastSearchQuery
     )
   }
+  func tearDownUnsubscribers() {
+    for unsubscriber in unsubscribers {
+      unsubscriber()
+    }
+    unsubscribers = []
+  }
   
-  func setupWiring() {
+  func showRestaurantsOnMap() {
+    // FIXME: bail out?
+    guard let dataSource = dataSource,
+      let mapManager = mapManager
+      else { return }
+    
+    let pinsData = dataSource.currentDataSet.map { restaurantData in
+      return Pin(
+        title: restaurantData.name,
+        latitude: restaurantData.location.coordinate.latitude,
+        longitude: restaurantData.location.coordinate.longitude,
+        rawData: restaurantData,
+        selected: restaurantData.selected
+      )
+    }
+    mapManager.addPins(pinsData)
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    tearDownUnsubscribers()
+  }
+  
+  func setupListeners() {
     // not sure what might happen here, let's lean on the safe side
     tearDownUnsubscribers()
     
@@ -68,9 +119,9 @@ class RestaurantTableViewController: UITableViewController {
     let dataSourceUnsubscriber = App.main!.on(
       App.Message.newRestaurantsDataSet
     ) { [weak self] _ in
-      self?.tableView.reloadData()
+      self?.restaurantTableViewController.tableView.reloadData()
       self?.showRestaurantsOnMap()
-      self?.refreshControl?.endRefreshing()
+      self?.restaurantTableViewController.refreshControl?.endRefreshing()
     }
     unsubscribers.append(dataSourceUnsubscriber)
     
@@ -78,14 +129,6 @@ class RestaurantTableViewController: UITableViewController {
     let newLocationUnsubscriber = App.main!.once(
       App.Message.newLocation
     ) { [weak self] notification in
-      // FIXME: bail out?
-      guard let location = notification.object as? CLLocation,
-        let mapManager = self?.mapManager else { return }
-      
-      mapManager.showRegion(
-        latitude: location.coordinate.latitude,
-        longitude: location.coordinate.longitude
-      )
       self?.refreshTable()
     }
     unsubscribers.append(newLocationUnsubscriber)
@@ -98,7 +141,7 @@ class RestaurantTableViewController: UITableViewController {
       AlertsManager.simple(
         title: "Warning!",
         message: message
-      ).alert.show(using: self)
+        ).alert.show(using: self)
     }
     unsubscribers.append(alertsUnsubscriber)
     
@@ -133,83 +176,14 @@ class RestaurantTableViewController: UITableViewController {
         annotation: annotation
       )
       
-      print("pin!!")
-
       guard let this = self,
         let dataSource = this.dataSource,
         let daPin = pin,
         let restaurantData = daPin.rawData as? RestaurantData
         else { return }
       
-      print("pin!!: \(daPin)")
       dataSource.select(restaurantData)
     }
     unsubscribers.append(viewAnnotationUnsubscriber)
-  }
-
-  func setupManagers() {
-    mapManager = MapManager(mainMap)
-    locationManager = LocationManager(app: App.main!)
-    searchBarManager = SearchBarManager(searchBar) { [weak self] _ in
-      self?.refreshTable()
-    }
-  }
-  
-  func tearDownUnsubscribers() {
-    for unsubscriber in unsubscribers {
-      unsubscriber()
-    }
-    unsubscribers = []
-  }
-  
-  func showRestaurantsOnMap() {
-    // FIXME: bail out?
-    guard let dataSource = dataSource,
-      let mapManager = mapManager
-      else { return }
-    
-    let pinsData = dataSource.currentDataSet.map { restaurantData in
-      return Pin(
-        title: restaurantData.name,
-        latitude: restaurantData.location.coordinate.latitude,
-        longitude: restaurantData.location.coordinate.longitude,
-        rawData: restaurantData,
-        selected: restaurantData.selected
-      )
-    }
-    mapManager.addPins(pinsData)
-  }
-  
-  override func viewWillDisappear(_ animated: Bool) {
-    tearDownUnsubscribers()
-  }
-
-  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell")!
-    let restaurantData = dataSource!.currentDataSet[indexPath.row]
-    cell.textLabel?.text = restaurantData.name
-    
-    if restaurantData.selected == true {
-      cell.backgroundColor = UIColor.brown
-    } else {
-      cell.backgroundColor = UIColor.white
-    }
-    
-    return cell
-  }
-  
-  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    dataSource!.selectRestaurantData(at: indexPath.row)
-  }
-
-  override func tableView(
-    _ tableView: UITableView,
-    numberOfRowsInSection section: Int
-  ) -> Int {
-    return dataSource!.currentDataSet.count
-  }
-
-  override func numberOfSections(in tableView: UITableView) -> Int {
-    return 1
   }
 }
