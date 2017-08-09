@@ -23,23 +23,12 @@ class LocationManager: NSObject {
     super.init()
     
     clLocationManager.delegate = self
-    clLocationManager.distanceFilter = 200.0 // meters
+    clLocationManager.distanceFilter = 200.0 // update every # meters
     clLocationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
   }
   
-  func askUserForPermission() {
-    if CLLocationManager.authorizationStatus() == .notDetermined {
-      clLocationManager.requestWhenInUseAuthorization()
-    }
-    /* else if CLLocationManager.authorizationStatus() == .denied {
-      // FIXME: this message may not be necessary because at startup we always request authorization and
-      // the App.Message.locationAuthorizationStatusUpdated should be invoked after that
-      
-      app.trigger(
-        App.Message.warnUser,
-        object: "The app cannot work properly withouth the permission to monitor its position while in use"
-      )
-    }*/
+  func initiate() {
+    handle(authorizationStatus: CLLocationManager.authorizationStatus())
   }
   
   func startReceivingLocationUpdates(){
@@ -49,13 +38,28 @@ class LocationManager: NSObject {
   func stopReceivingLocationsUpdate(){
     clLocationManager.stopUpdatingLocation()
   }
+  
+  func handle(authorizationStatus: CLAuthorizationStatus) {
+    switch authorizationStatus {
+    case .denied:
+      app.trigger(
+        App.Message.warnUser,
+        object: "The app cannot work properly withouth the permission to monitor its position while in use"
+      )
+    case .authorizedWhenInUse:
+      startReceivingLocationUpdates()
+    default:
+      return
+    }
+  }
 }
 
 extension LocationManager: CLLocationManagerDelegate {
   func locationManager(
     _ manager: CLLocationManager,
     didChangeAuthorization status: CLAuthorizationStatus
-    ) {
+  ) {
+    handle(authorizationStatus: status)
     app.trigger(App.Message.locationAuthorizationStatusUpdated, object: status)
   }
   

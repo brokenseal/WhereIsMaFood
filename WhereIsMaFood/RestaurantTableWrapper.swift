@@ -16,14 +16,27 @@ class RestaurantTableWrapper: UIViewController {
   @IBOutlet weak var restaurantTableContainer: UIView!
   
   var unsubscribers: [Unsubscriber] = []
-  var dataSource: RestaurantsDataSource?
-  var mapManager: MapManager?
-  var locationManager: LocationManager?
-  var searchBarManager: SearchBarManager?
-  lazy var restaurantTableViewController: RestaurantTableViewController = { [unowned self] in
+  var dataSource: RestaurantsDataSource {
+    return RestaurantsDataSource(
+      app: App.main!,
+      dataGenerator: MKRestaurantDataSetGenerator()
+    )
+  }
+  var restaurantTableViewController: RestaurantTableViewController {
     return self.childViewControllers[0] as! RestaurantTableViewController
-  }()
-  
+  }
+  var mapManager: MapManager {
+    return MapManager(self.mainMap!)
+  }
+  var locationManager: LocationManager {
+    return LocationManager(app: App.main!)
+  }
+  var searchBarManager: SearchBarManager {
+    return SearchBarManager(self.searchBar) { [weak self] _ in
+      self?.refreshTable()
+    }
+  }
+
   override func viewDidLoad() {
     super.viewDidLoad()
     setup()
@@ -31,28 +44,16 @@ class RestaurantTableWrapper: UIViewController {
   }
   
   func setup() {
-    setupManagers()
     setupRefreshController()
     setupListeners()
-    dataSource = RestaurantsDataSource(
-      app: App.main!,
-      dataGenerator: MKRestaurantDataSetGenerator()
-    )
     restaurantTableViewController.setup(
-      dataSource: dataSource!
+      dataSource: dataSource,
+      mapManager: mapManager
     )
   }
   
   func start(){
-    locationManager!.askUserForPermission()
-  }
-
-  func setupManagers() {
-    mapManager = MapManager(mainMap)
-    locationManager = LocationManager(app: App.main!)
-    searchBarManager = SearchBarManager(searchBar) { [weak self] _ in
-      self?.refreshTable()
-    }
+    locationManager.initiate()
   }
   
   func setupRefreshController(){
@@ -66,16 +67,14 @@ class RestaurantTableWrapper: UIViewController {
   
   func refreshTable(){
     // FIXME: bail out?
-    guard let mapManager = mapManager,
-      let dataSource = dataSource,
-      let searchBarManager = searchBarManager,
-      let locationManager = locationManager,
-      let location = locationManager.lastLocation else { return }
+    guard let location = locationManager.lastLocation else { return }
     
-    mapManager.showRegion(
+    // TODO/FIXME: not sure about this one, the problem that I'm trying to fix is that the map region is not
+    // updated along with the location, at the same time, but rather later
+    /*mapManager.showRegion(
       latitude: location.coordinate.latitude,
       longitude: location.coordinate.longitude
-    )
+    )*/
     
     dataSource.updateData(
       for: mapManager.getCurrentRegion(),
@@ -90,11 +89,6 @@ class RestaurantTableWrapper: UIViewController {
   }
   
   func showRestaurantsOnMap() {
-    // FIXME: bail out?
-    guard let dataSource = dataSource,
-      let mapManager = mapManager
-      else { return }
-    
     let pinsData = dataSource.currentDataSet.map { restaurantData in
       return Pin(
         title: restaurantData.name,
@@ -105,10 +99,6 @@ class RestaurantTableWrapper: UIViewController {
       )
     }
     mapManager.addPins(pinsData)
-  }
-  
-  override func viewWillDisappear(_ animated: Bool) {
-    tearDownUnsubscribers()
   }
   
   func setupListeners() {
@@ -126,13 +116,29 @@ class RestaurantTableWrapper: UIViewController {
     unsubscribers.append(dataSourceUnsubscriber)
     
     // LISTENER: update map when a new location is received, but only once, at the beginning
-    let newLocationUnsubscriber = App.main!.once(
+    let newLocationUnsubscriberOnce = App.main!.once(
       App.Message.newLocation
     ) { [weak self] notification in
       self?.refreshTable()
     }
-    unsubscribers.append(newLocationUnsubscriber)
+    unsubscribers.append(newLocationUnsubscriberOnce)
     
+    // LISTENER: update map when a new location is received, but only once, at the beginning
+    let newLocationUnsubscriber = App.main!.on(
+      App.Message.newLocation
+    ) { [weak self] notification in
+      // FIXME: bail out?
+      guard let location = notification.object as? CLLocation else { return }
+      
+      // TODO/FIXME: not sure about this one, the problem that I'm trying to fix is that the map region
+      // is not updated along with the location, at the same time, but rather later
+      self?.mapManager.showRegion(
+        latitude: location.coordinate.latitude,
+        longitude: location.coordinate.longitude
+      )
+    }
+    unsubscribers.append(newLocationUnsubscriber)
+
     // LISTENER: show an alert when a warnUser message is received
     let alertsUnsubscriber = App.main!.on(App.Message.warnUser) { notification in
       // FIXME: bail out?
@@ -144,25 +150,6 @@ class RestaurantTableWrapper: UIViewController {
         ).alert.show(using: self)
     }
     unsubscribers.append(alertsUnsubscriber)
-    
-    // LISTENER: on location authorization update
-    let locationAuthorizationUnsubscriber = App.main!.on(
-      App.Message.locationAuthorizationStatusUpdated
-    ) { [weak self] notification in
-      // FIXME: bail out?
-      guard let status = notification.object as? CLAuthorizationStatus else { return }
-      
-      if status == CLAuthorizationStatus.denied {
-        App.main!.trigger(
-          App.Message.warnUser,
-          object: "The app cannot work properly withouth the permission to monitor its position while in use"
-        )
-      } else if status == CLAuthorizationStatus.authorizedWhenInUse,
-        let locationManager = self?.locationManager {
-        locationManager.startReceivingLocationUpdates()
-      }
-    }
-    unsubscribers.append(locationAuthorizationUnsubscriber)
     
     let viewAnnotationUnsubscriber = App.main!.on(
       App.Message.annotationViewSelected
@@ -176,13 +163,11 @@ class RestaurantTableWrapper: UIViewController {
         annotation: annotation
       )
       
-      guard let this = self,
-        let dataSource = this.dataSource,
-        let daPin = pin,
+      guard let daPin = pin,
         let restaurantData = daPin.rawData as? RestaurantData
         else { return }
       
-      dataSource.select(restaurantData)
+      self?.dataSource.select(restaurantData)
     }
     unsubscribers.append(viewAnnotationUnsubscriber)
   }

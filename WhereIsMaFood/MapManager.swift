@@ -16,10 +16,54 @@ struct Pin {
   let longitude: Double
   let rawData: Any?
   var selected: Bool
+  
+  var location: CLLocation {
+    return CLLocation(
+      latitude: latitude,
+      longitude: longitude
+    )
+  }
 }
 
 class MapManager: NSObject {
-  private let map:MKMapView
+  enum ExternalMapDirectionsProvider {
+    case apple
+    case google
+    
+    func getDirectionsUrlsUsing(
+      from: CLLocation,
+      to: CLLocation
+    ) -> URL {
+      var directionsUrl: String
+      let appleDirectionsUrl = "http://maps.apple.com/?saddr=\(from.coordinate.latitude),\(from.coordinate.longitude)&daddr=\(to.coordinate.latitude),\(to.coordinate.longitude)"
+      
+      switch self {
+        case .apple: directionsUrl = appleDirectionsUrl
+        case .google: directionsUrl = "http://maps.google.com/"
+        default: directionsUrl = appleDirectionsUrl
+      }
+      
+      return URL(string: directionsUrl)!
+    }
+
+    func getDirections(
+      from: CLLocation,
+      to: CLLocation
+    ){
+      let directionsUrl = getDirectionsUrlsUsing(
+        from: from,
+        to: to
+      )
+      
+      UIApplication.shared.open(
+        directionsUrl,
+        options: [:],
+        completionHandler: nil
+      )
+    }
+  }
+  
+  internal let map:MKMapView
   private var managedPins: [(Pin, MKAnnotation)] = []
 
   var regionRadius: Double
@@ -92,16 +136,64 @@ class MapManager: NSObject {
     
     return nil
   }
+  
+  func getCurrentlySelectedPin() -> Pin? {
+    let selectedAnnotation = map.selectedAnnotations[0]
+    
+    return Pin(
+      title: selectedAnnotation.title!!,
+      latitude: selectedAnnotation.coordinate.latitude,
+      longitude: selectedAnnotation.coordinate.longitude,
+      rawData: nil,
+      selected: true
+    )
+  }
 }
 
 // MARK: map view delegate extension
 extension MapManager: MKMapViewDelegate {
-  func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
+  func mapView(
+    _ mapView: MKMapView,
+    didAdd views: [MKAnnotationView]
+  ) {
     for annotationView in views {
       let button = UIButton(type: .detailDisclosure)
       annotationView.canShowCallout = true
       annotationView.rightCalloutAccessoryView = button
+      button.addTarget(
+        self,
+        action: #selector(MapManager.showDirectionsUsingCurrentLocations),
+        for: UIControlEvents.touchDown
+      )
     }
+  }
+  
+  func getLocationsForDirections() -> (CLLocation, CLLocation)? {
+    if let currentlySelectedPin = getCurrentlySelectedPin(),
+      let userLocation = map.userLocation.location {
+      return (currentlySelectedPin.location, userLocation)
+    }
+    
+    return nil
+  }
+  
+  func showDirectionsUsingCurrentLocations() {
+    // FIXME: Tell user?
+    if let (selectedPinLocation, userLocation) = getLocationsForDirections() {
+      showDirectionsUsing(
+        provider: .apple,
+        from: userLocation,
+        to: selectedPinLocation
+      )
+    }
+  }
+  
+  func showDirectionsUsing(
+    provider: ExternalMapDirectionsProvider,
+    from: CLLocation,
+    to: CLLocation
+  ){
+    provider.getDirections(from: from, to: to)
   }
   
   func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {

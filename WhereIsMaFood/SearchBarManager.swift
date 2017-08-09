@@ -30,12 +30,11 @@ class SearchBarManager: NSObject {
   }
 }
 
-
 extension SearchBarManager: UISearchBarDelegate {
   func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
     searchBar.resignFirstResponder()
   }
-  func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
     searchBar.resignFirstResponder()
     lastSearchQuery = searchBar.text ?? ""
     textDidChangeListener(lastSearchQuery)

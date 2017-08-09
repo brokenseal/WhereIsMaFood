@@ -43,6 +43,16 @@ class RestaurantsDataSource {
     }
   }
   
+  func getSelectedRestaurantData() -> RestaurantData? {
+    for restaurantData in currentDataSet {
+      if restaurantData.selected == true {
+        return restaurantData
+      }
+    }
+    
+    return nil
+  }
+  
   func select(_ restauranData: RestaurantData) {
     let toBeSelected = restauranData
     

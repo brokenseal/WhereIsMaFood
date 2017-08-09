@@ -12,24 +12,23 @@ import Foundation
 class RestaurantTableCell: UITableViewCell {
   @IBOutlet weak var restaurantName: UILabel!
   @IBOutlet weak var url: UILabel!
+  @IBOutlet weak var showWebsite: UIBarButtonItem!
+  @IBOutlet weak var toolbar: UIToolbar!
   
   var restaurantData: RestaurantData?
   
   func setup(with restaurantData: RestaurantData){
     self.restaurantData = restaurantData
     
-    self.isSelected = restaurantData.selected
-    /*
-    if restaurantData.selected == true {
-      self.backgroundColor = UIColor.lightGray
-    } else {
-      self.backgroundColor = nil
-    }
-    */
-    self.restaurantName.text = restaurantData.name
+    isSelected = restaurantData.selected
+    restaurantName.text = restaurantData.name
     
     if let url = restaurantData.url {
       self.url.text = url.absoluteString
     }
+    
+    self.backgroundColor = isSelected ? UIColor.lightGray : nil
+    toolbar.isHidden = !isSelected
+    showWebsite.isEnabled = restaurantData.url != nil && isSelected == true
   }
 }
