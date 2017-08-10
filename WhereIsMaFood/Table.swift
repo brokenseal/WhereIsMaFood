@@ -11,15 +11,15 @@ import MapKit
 
 
 class RestaurantTableViewController: UITableViewController {
+  var tableWrapper: RestaurantTableWrapper {
+    return self.parent as! RestaurantTableWrapper
+  }
   var dataSource: RestaurantsDataSource!
-  var mapManager: MapManager!
 
   func setup(
-    dataSource: RestaurantsDataSource,
-    mapManager: MapManager
+    dataSource: RestaurantsDataSource
   ) {
     self.dataSource = dataSource
-    self.mapManager = mapManager
   }
   
   override func tableView(
@@ -65,9 +65,9 @@ class RestaurantTableViewController: UITableViewController {
     let restaurantData = dataSource.currentDataSet[indexPath.row]
     return restaurantData.selected ? 120 : 60
   }
-  
+
   @IBAction func showDirections(_ sender: Any) {
-    guard let (from, to) = mapManager.getLocationsForDirections() else { return }
+    guard let (from, to) = tableWrapper.mapManager.getLocationsForDirections() else { return }
     
     let alertViewController = UIAlertController(
       title: "",
@@ -80,7 +80,7 @@ class RestaurantTableViewController: UITableViewController {
     
     let chooseAppleMaps = UIAlertAction(title: "", style: .default) { _ in
       MapManager.ExternalMapDirectionsProvider.apple.getDirections(from: from, to: to)
-      self.mapManager.showDirectionsUsing(
+      self.tableWrapper.mapManager.showDirectionsUsing(
         provider: .apple,
         from: from,
         to: to
@@ -90,7 +90,7 @@ class RestaurantTableViewController: UITableViewController {
     alertViewController.addAction(chooseAppleMaps)
     let chooseGoogleMaps = UIAlertAction(title: "", style: .default) { _ in
       MapManager.ExternalMapDirectionsProvider.google.getDirections(from: from, to: to)
-      self.mapManager.showDirectionsUsing(
+      self.tableWrapper.mapManager.showDirectionsUsing(
         provider: .apple,
         from: from,
         to: to
@@ -108,7 +108,7 @@ class RestaurantTableViewController: UITableViewController {
       completion: nil
     )
   }
-  
+
   override func prepare(
     for segue: UIStoryboardSegue,
     sender: Any?

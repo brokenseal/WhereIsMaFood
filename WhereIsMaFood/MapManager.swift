@@ -197,6 +197,6 @@ extension MapManager: MKMapViewDelegate {
   }
   
   func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-    App.main!.trigger(App.Message.annotationViewSelected, object: view)
+    App.main.trigger(App.Message.annotationViewSelected, object: view)
   }
 }

@@ -16,44 +16,40 @@ class RestaurantTableWrapper: UIViewController {
   @IBOutlet weak var restaurantTableContainer: UIView!
   
   var unsubscribers: [Unsubscriber] = []
-  var dataSource: RestaurantsDataSource {
-    return RestaurantsDataSource(
-      app: App.main!,
-      dataGenerator: MKRestaurantDataSetGenerator()
-    )
-  }
+  var dataSource: RestaurantsDataSource!
+  var mapManager: MapManager!
+  var searchBarManager: SearchBarManager!
   var restaurantTableViewController: RestaurantTableViewController {
     return self.childViewControllers[0] as! RestaurantTableViewController
   }
-  var mapManager: MapManager {
-    return MapManager(self.mainMap!)
-  }
-  var locationManager: LocationManager {
-    return LocationManager(app: App.main!)
-  }
-  var searchBarManager: SearchBarManager {
-    return SearchBarManager(self.searchBar) { [weak self] _ in
-      self?.refreshTable()
-    }
-  }
-
+  
   override func viewDidLoad() {
     super.viewDidLoad()
+    
     setup()
     start()
   }
   
   func setup() {
+    dataSource = RestaurantsDataSource(
+      app: App.main,
+      dataGenerator: MKRestaurantDataSetGenerator()
+    )
+    mapManager = MapManager(self.mainMap!)
+    searchBarManager = SearchBarManager(self.searchBar) { [weak self] _ in
+      self?.refreshTable()
+    }
+    
     setupRefreshController()
     setupListeners()
+    
     restaurantTableViewController.setup(
-      dataSource: dataSource,
-      mapManager: mapManager
+      dataSource: dataSource
     )
   }
   
   func start(){
-    locationManager.initiate()
+    App.main.locationManager.initiate()
   }
   
   func setupRefreshController(){
@@ -66,21 +62,12 @@ class RestaurantTableWrapper: UIViewController {
   }
   
   func refreshTable(){
-    // FIXME: bail out?
-    guard let location = locationManager.lastLocation else { return }
-    
-    // TODO/FIXME: not sure about this one, the problem that I'm trying to fix is that the map region is not
-    // updated along with the location, at the same time, but rather later
-    /*mapManager.showRegion(
-      latitude: location.coordinate.latitude,
-      longitude: location.coordinate.longitude
-    )*/
-    
     dataSource.updateData(
       for: mapManager.getCurrentRegion(),
       searchQuery: searchBarManager.lastSearchQuery
     )
   }
+  
   func tearDownUnsubscribers() {
     for unsubscriber in unsubscribers {
       unsubscriber()
@@ -106,7 +93,7 @@ class RestaurantTableWrapper: UIViewController {
     tearDownUnsubscribers()
     
     // LISTENER: update table data when new restaurants data is received
-    let dataSourceUnsubscriber = App.main!.on(
+    let dataSourceUnsubscriber = App.main.on(
       App.Message.newRestaurantsDataSet
     ) { [weak self] _ in
       self?.restaurantTableViewController.tableView.reloadData()
@@ -116,15 +103,22 @@ class RestaurantTableWrapper: UIViewController {
     unsubscribers.append(dataSourceUnsubscriber)
     
     // LISTENER: update map when a new location is received, but only once, at the beginning
-    let newLocationUnsubscriberOnce = App.main!.once(
+    let newLocationUnsubscriberOnce = App.main.once(
       App.Message.newLocation
     ) { [weak self] notification in
       self?.refreshTable()
+      
+      // FIXME: bail out?
+      guard let location = notification.object as? CLLocation else { return }
+      self?.mapManager.showRegion(
+        latitude: location.coordinate.latitude,
+        longitude: location.coordinate.longitude
+      )
     }
     unsubscribers.append(newLocationUnsubscriberOnce)
     
     // LISTENER: update map when a new location is received, but only once, at the beginning
-    let newLocationUnsubscriber = App.main!.on(
+    let newLocationUnsubscriber = App.main.on(
       App.Message.newLocation
     ) { [weak self] notification in
       // FIXME: bail out?
@@ -140,7 +134,7 @@ class RestaurantTableWrapper: UIViewController {
     unsubscribers.append(newLocationUnsubscriber)
 
     // LISTENER: show an alert when a warnUser message is received
-    let alertsUnsubscriber = App.main!.on(App.Message.warnUser) { notification in
+    let alertsUnsubscriber = App.main.on(App.Message.warnUser) { notification in
       // FIXME: bail out?
       guard let message = notification.object as? String else { return }
       
@@ -151,7 +145,7 @@ class RestaurantTableWrapper: UIViewController {
     }
     unsubscribers.append(alertsUnsubscriber)
     
-    let viewAnnotationUnsubscriber = App.main!.on(
+    let viewAnnotationUnsubscriber = App.main.on(
       App.Message.annotationViewSelected
     ) { [weak self] notification in
       // FIXME: bail out?

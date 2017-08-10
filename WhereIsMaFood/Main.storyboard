@@ -115,7 +115,7 @@
                                                 <barButtonItem style="plain" systemItem="flexibleSpace" id="nX3-h3-Rb6"/>
                                                 <barButtonItem title="Show Directions" id="Uu8-cE-Su9">
                                                     <connections>
-                                                        <action selector="showDirections:" destination="Zj3-EF-CU6" id="Ing-GT-kd0"/>
+                                                        <action selector="showDirections:" destination="Zj3-EF-CU6" id="BnY-zy-Bt4"/>
                                                     </connections>
                                                 </barButtonItem>
                                             </items>

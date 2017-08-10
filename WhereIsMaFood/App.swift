@@ -16,7 +16,7 @@ typealias Listener = (Notification) -> Void
 
 
 final class App {
-  static var main: App?
+  static var main: App!
   
   enum Message: String {
     // message sent if we want to warn the user about something, possibly showing an alert
@@ -51,9 +51,11 @@ final class App {
 
   private let notificationsManager: NotificationCenter
   private var unsubscribers: [Unsubscriber] = []
+  let locationManager: LocationManager
 
   init(notificationsManager: NotificationCenter) {
     self.notificationsManager = notificationsManager
+    self.locationManager = LocationManager()
   }
 
   func on(

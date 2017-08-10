@@ -15,11 +15,7 @@ class LocationManager: NSObject {
   private let clLocationManager = CLLocationManager()
   var lastLocation: CLLocation?
   
-  let app: App
-  
-  init(app: App) {
-    self.app = app
-    
+  override init() {
     super.init()
     
     clLocationManager.delegate = self
@@ -42,7 +38,7 @@ class LocationManager: NSObject {
   func handle(authorizationStatus: CLAuthorizationStatus) {
     switch authorizationStatus {
     case .denied:
-      app.trigger(
+      App.main.trigger(
         App.Message.warnUser,
         object: "The app cannot work properly withouth the permission to monitor its position while in use"
       )
@@ -60,7 +56,7 @@ extension LocationManager: CLLocationManagerDelegate {
     didChangeAuthorization status: CLAuthorizationStatus
   ) {
     handle(authorizationStatus: status)
-    app.trigger(App.Message.locationAuthorizationStatusUpdated, object: status)
+    App.main.trigger(App.Message.locationAuthorizationStatusUpdated, object: status)
   }
   
   func locationManager(
@@ -69,7 +65,7 @@ extension LocationManager: CLLocationManagerDelegate {
   ) {
     if let location = locations.last {
       lastLocation = location
-      app.trigger(App.Message.newLocation, object: location)
+      App.main.trigger(App.Message.newLocation, object: location)
     }
   }
 }
