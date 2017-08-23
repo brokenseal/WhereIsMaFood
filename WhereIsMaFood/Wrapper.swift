@@ -16,9 +16,9 @@ class RestaurantTableWrapper: UIViewController {
   @IBOutlet weak var restaurantTableContainer: UIView!
   
   var unsubscribers: [Unsubscriber] = []
-  var dataSource: RestaurantsDataSource!
-  var mapManager: MapManager!
-  var searchBarManager: SearchBarManager!
+  var dataSource: RestaurantsDataSource?
+  var mapManager: MapManager?
+  var searchBarManager: SearchBarManager?
   var restaurantTableViewController: RestaurantTableViewController {
     return self.childViewControllers[0] as! RestaurantTableViewController
   }
@@ -44,7 +44,7 @@ class RestaurantTableWrapper: UIViewController {
     setupListeners()
     
     restaurantTableViewController.setup(
-      dataSource: dataSource
+      dataSource: dataSource!
     )
   }
   
@@ -53,8 +53,9 @@ class RestaurantTableWrapper: UIViewController {
   }
   
   func setupRefreshController(){
-    restaurantTableViewController.refreshControl = UIRefreshControl()
-    restaurantTableViewController.refreshControl!.addTarget(
+    let refreshControl = UIRefreshControl()
+    restaurantTableViewController.refreshControl = refreshControl
+    refreshControl.addTarget(
       self,
       action: #selector(RestaurantTableWrapper.refreshTable),
       for: .valueChanged
@@ -62,6 +63,10 @@ class RestaurantTableWrapper: UIViewController {
   }
   
   func refreshTable(){
+    guard let dataSource = dataSource,
+      let mapManager = mapManager,
+      let searchBarManager = searchBarManager else { return }
+    
     dataSource.updateData(
       for: mapManager.getCurrentRegion(),
       searchQuery: searchBarManager.lastSearchQuery
@@ -76,6 +81,9 @@ class RestaurantTableWrapper: UIViewController {
   }
   
   func showRestaurantsOnMap() {
+    guard let dataSource = dataSource,
+      let mapManager = mapManager else { return }
+    
     let pinsData = dataSource.currentDataSet.map { restaurantData in
       return Pin(
         title: restaurantData.name,
@@ -108,9 +116,10 @@ class RestaurantTableWrapper: UIViewController {
     ) { [weak self] notification in
       self?.refreshTable()
       
-      // FIXME: bail out?
-      guard let location = notification.object as? CLLocation else { return }
-      self?.mapManager.showRegion(
+      guard let location = notification.object as? CLLocation,
+        let mapManager = self?.mapManager else { return }
+      
+      mapManager.showRegion(
         latitude: location.coordinate.latitude,
         longitude: location.coordinate.longitude
       )
@@ -121,12 +130,12 @@ class RestaurantTableWrapper: UIViewController {
     let newLocationUnsubscriber = App.main.on(
       App.Message.newLocation
     ) { [weak self] notification in
-      // FIXME: bail out?
-      guard let location = notification.object as? CLLocation else { return }
+      guard let location = notification.object as? CLLocation,
+        let mapManager = self?.mapManager else { return }
       
       // TODO/FIXME: not sure about this one, the problem that I'm trying to fix is that the map region
       // is not updated along with the location, at the same time, but rather later
-      self?.mapManager.showRegion(
+      mapManager.showRegion(
         latitude: location.coordinate.latitude,
         longitude: location.coordinate.longitude
       )
@@ -158,10 +167,11 @@ class RestaurantTableWrapper: UIViewController {
       )
       
       guard let daPin = pin,
-        let restaurantData = daPin.rawData as? RestaurantData
+        let restaurantData = daPin.rawData as? RestaurantData,
+        let dataSource = self?.dataSource
         else { return }
       
-      self?.dataSource.select(restaurantData)
+      dataSource.select(restaurantData)
     }
     unsubscribers.append(viewAnnotationUnsubscriber)
   }

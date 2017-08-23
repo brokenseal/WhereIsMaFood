@@ -40,7 +40,6 @@ class MapManager: NSObject {
       switch self {
         case .apple: directionsUrl = appleDirectionsUrl
         case .google: directionsUrl = "http://maps.google.com/"
-        default: directionsUrl = appleDirectionsUrl
       }
       
       return URL(string: directionsUrl)!

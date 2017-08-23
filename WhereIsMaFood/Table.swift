@@ -11,10 +11,10 @@ import MapKit
 
 
 class RestaurantTableViewController: UITableViewController {
-  var tableWrapper: RestaurantTableWrapper {
+  var wrapper: RestaurantTableWrapper {
     return self.parent as! RestaurantTableWrapper
   }
-  var dataSource: RestaurantsDataSource!
+  var dataSource: RestaurantsDataSource?
 
   func setup(
     dataSource: RestaurantsDataSource
@@ -26,6 +26,7 @@ class RestaurantTableViewController: UITableViewController {
     _ tableView: UITableView,
     numberOfRowsInSection section: Int
   ) -> Int {
+    guard let dataSource = dataSource else { return 0 }
     return dataSource.currentDataSet.count
   }
   
@@ -33,9 +34,9 @@ class RestaurantTableViewController: UITableViewController {
     _ tableView: UITableView,
     cellForRowAt indexPath: IndexPath
   ) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(
-      withIdentifier: "DefaultCell"
-    )! as! RestaurantTableCell
+    let dataSource = self.dataSource!
+    let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell")! as! RestaurantTableCell
+    
     let restaurantData = dataSource.currentDataSet[indexPath.row]
     
     cell.setup(with: restaurantData)
@@ -55,19 +56,19 @@ class RestaurantTableViewController: UITableViewController {
     _ tableView: UITableView,
     didSelectRowAt indexPath: IndexPath
   ) {
-    dataSource.selectRestaurantData(at: indexPath.row)
+    dataSource!.selectRestaurantData(at: indexPath.row)
   }
   
   override func tableView(
     _ tableView: UITableView,
     heightForRowAt indexPath: IndexPath
   ) -> CGFloat {
-    let restaurantData = dataSource.currentDataSet[indexPath.row]
+    let restaurantData = dataSource!.currentDataSet[indexPath.row]
     return restaurantData.selected ? 120 : 60
   }
 
   @IBAction func showDirections(_ sender: Any) {
-    guard let (from, to) = tableWrapper.mapManager.getLocationsForDirections() else { return }
+    guard let (from, to) = wrapper.mapManager?.getLocationsForDirections() else { return }
     
     let alertViewController = UIAlertController(
       title: "",
@@ -80,7 +81,7 @@ class RestaurantTableViewController: UITableViewController {
     
     let chooseAppleMaps = UIAlertAction(title: "", style: .default) { _ in
       MapManager.ExternalMapDirectionsProvider.apple.getDirections(from: from, to: to)
-      self.tableWrapper.mapManager.showDirectionsUsing(
+      self.wrapper.mapManager?.showDirectionsUsing(
         provider: .apple,
         from: from,
         to: to
@@ -90,7 +91,7 @@ class RestaurantTableViewController: UITableViewController {
     alertViewController.addAction(chooseAppleMaps)
     let chooseGoogleMaps = UIAlertAction(title: "", style: .default) { _ in
       MapManager.ExternalMapDirectionsProvider.google.getDirections(from: from, to: to)
-      self.tableWrapper.mapManager.showDirectionsUsing(
+      self.wrapper.mapManager?.showDirectionsUsing(
         provider: .apple,
         from: from,
         to: to
@@ -117,7 +118,7 @@ class RestaurantTableViewController: UITableViewController {
       let viewController = segue.destination as! ShowWebsiteModalViewController
       
       // FIXME: bail out?
-      if let currentData = dataSource.getSelectedRestaurantData(),
+      if let currentData = dataSource!.getSelectedRestaurantData(),
         let url = currentData.url {
         viewController.setup(url: url)
       }

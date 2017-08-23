@@ -21,7 +21,6 @@
 		ADA279531F17CEA900F9B318 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA279521F17CEA900F9B318 /* AppDelegate.swift */; };
 		ADA279551F17CEA900F9B318 /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA279541F17CEA900F9B318 /* Table.swift */; };
 		ADA2795A1F17CEA900F9B318 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADA279591F17CEA900F9B318 /* Assets.xcassets */; };
-		ADA2795D1F17CEA900F9B318 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADA2795B1F17CEA900F9B318 /* LaunchScreen.storyboard */; };
 		ADA279821F17D64100F9B318 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA279811F17D64100F9B318 /* MapManager.swift */; };
 		ADA279841F17D70F00F9B318 /* AlertsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA279831F17D70F00F9B318 /* AlertsManager.swift */; };
 		ADCF87B11F1D3F5900F4188C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADCF87B01F1D3F5900F4188C /* MapKit.framework */; };
@@ -61,7 +60,6 @@
 		ADA279521F17CEA900F9B318 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADA279541F17CEA900F9B318 /* Table.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Table.swift; sourceTree = "<group>"; };
 		ADA279591F17CEA900F9B318 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		ADA2795C1F17CEA900F9B318 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ADA2795E1F17CEA900F9B318 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADA279811F17D64100F9B318 /* MapManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
 		ADA279831F17D70F00F9B318 /* AlertsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertsManager.swift; sourceTree = "<group>"; };
@@ -149,7 +147,6 @@
 			isa = PBXGroup;
 			children = (
 				AD44BDE41F3066B400D75FA3 /* Main.storyboard */,
-				ADA2795B1F17CEA900F9B318 /* LaunchScreen.storyboard */,
 			);
 			name = StoryBoards;
 			sourceTree = "<group>";
@@ -312,7 +309,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD44BDE51F3066B500D75FA3 /* Main.storyboard in Resources */,
-				ADA2795D1F17CEA900F9B318 /* LaunchScreen.storyboard in Resources */,
 				ADA2795A1F17CEA900F9B318 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -450,17 +446,6 @@
 			targetProxy = AD4208D01F22568B00671FE8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		ADA2795B1F17CEA900F9B318 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				ADA2795C1F17CEA900F9B318 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		AD4208D31F22568B00671FE8 /* Debug */ = {

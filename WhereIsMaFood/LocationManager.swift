@@ -24,7 +24,7 @@ class LocationManager: NSObject {
   }
   
   func initiate() {
-    handle(authorizationStatus: CLLocationManager.authorizationStatus())
+    handleAuthorizationStatus(CLLocationManager.authorizationStatus())
   }
   
   func startReceivingLocationUpdates(){
@@ -35,14 +35,16 @@ class LocationManager: NSObject {
     clLocationManager.stopUpdatingLocation()
   }
   
-  func handle(authorizationStatus: CLAuthorizationStatus) {
+  func handleAuthorizationStatus(_ authorizationStatus: CLAuthorizationStatus) {
     switch authorizationStatus {
+    case .notDetermined:
+      clLocationManager.requestWhenInUseAuthorization()
     case .denied:
       App.main.trigger(
         App.Message.warnUser,
         object: "The app cannot work properly withouth the permission to monitor its position while in use"
       )
-    case .authorizedWhenInUse:
+    case .authorizedWhenInUse, .authorizedAlways:
       startReceivingLocationUpdates()
     default:
       return
@@ -55,7 +57,7 @@ extension LocationManager: CLLocationManagerDelegate {
     _ manager: CLLocationManager,
     didChangeAuthorization status: CLAuthorizationStatus
   ) {
-    handle(authorizationStatus: status)
+    handleAuthorizationStatus(status)
     App.main.trigger(App.Message.locationAuthorizationStatusUpdated, object: status)
   }
   

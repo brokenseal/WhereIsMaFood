@@ -26,7 +26,7 @@ class ShowWebsiteModalViewController: UIViewController {
     }
   }
   
-  func setup(url: URL){
+  func setup(url: URL) {
     self.url = url
   }
 }
