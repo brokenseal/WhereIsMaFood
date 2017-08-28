@@ -35,11 +35,9 @@ class MapManager: NSObject {
       to: CLLocation
     ) -> URL {
       var directionsUrl: String
-      let appleDirectionsUrl = "http://maps.apple.com/?saddr=\(from.coordinate.latitude),\(from.coordinate.longitude)&daddr=\(to.coordinate.latitude),\(to.coordinate.longitude)"
-      
       switch self {
-        case .apple: directionsUrl = appleDirectionsUrl
-        case .google: directionsUrl = "http://maps.google.com/"
+        case .apple: directionsUrl = "http://maps.apple.com/?saddr=\(from.coordinate.latitude),\(from.coordinate.longitude)&daddr=\(to.coordinate.latitude),\(to.coordinate.longitude)"
+        case .google: directionsUrl = "comgooglemaps://?saddr=&daddr=\(from.coordinate.latitude),\(from.coordinate.longitude)"
       }
       
       return URL(string: directionsUrl)!
@@ -54,11 +52,15 @@ class MapManager: NSObject {
         to: to
       )
       
-      UIApplication.shared.open(
-        directionsUrl,
-        options: [:],
-        completionHandler: nil
-      )
+      if UIApplication.shared.canOpenURL(directionsUrl) {
+        UIApplication.shared.open(
+          directionsUrl,
+          options: [:],
+          completionHandler: nil
+        )
+      } else {
+        App.main!.trigger(App.Message.warnUser, object: "Can't open directions app: is it installed?")
+      }
     }
   }
   
@@ -69,7 +71,7 @@ class MapManager: NSObject {
 
   init(
     _ map: MKMapView,
-    regionRadius: Double = 1000.0
+    regionRadius: Double = 2000.0
   ){
     self.map = map
     self.regionRadius = regionRadius
@@ -137,6 +139,10 @@ class MapManager: NSObject {
   }
   
   func getCurrentlySelectedPin() -> Pin? {
+    if map.selectedAnnotations.count == 0 {
+      return nil
+    }
+    
     let selectedAnnotation = map.selectedAnnotations[0]
     
     return Pin(
@@ -155,6 +161,10 @@ extension MapManager: MKMapViewDelegate {
     _ mapView: MKMapView,
     didAdd views: [MKAnnotationView]
   ) {
+    //addInformationButtonTo(views)
+  }
+  
+  func addInformationButtonTo(_ views: [MKAnnotationView]){
     for annotationView in views {
       let button = UIButton(type: .detailDisclosure)
       annotationView.canShowCallout = true
@@ -168,16 +178,14 @@ extension MapManager: MKMapViewDelegate {
   }
   
   func getLocationsForDirections() -> (CLLocation, CLLocation)? {
-    if let currentlySelectedPin = getCurrentlySelectedPin(),
-      let userLocation = map.userLocation.location {
-      return (currentlySelectedPin.location, userLocation)
-    }
+    guard let currentlySelectedPin = getCurrentlySelectedPin(),
+      let userLocation = map.userLocation.location else { return nil }
     
-    return nil
+    return (currentlySelectedPin.location, userLocation)
   }
   
   func showDirectionsUsingCurrentLocations() {
-    // FIXME: Tell user?
+    // FIXME: Inform user?
     if let (selectedPinLocation, userLocation) = getLocationsForDirections() {
       showDirectionsUsing(
         provider: .apple,

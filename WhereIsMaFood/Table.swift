@@ -70,41 +70,31 @@ class RestaurantTableViewController: UITableViewController {
   @IBAction func showDirections(_ sender: Any) {
     guard let (from, to) = wrapper.mapManager?.getLocationsForDirections() else { return }
     
-    let alertViewController = UIAlertController(
-      title: "",
+    let directionsMenu = UIAlertController(
+      title: "Get directions",
       message: "",
       preferredStyle: .actionSheet
     )
     func dismissAlert(){
-      alertViewController.dismiss(animated: true, completion: nil)
+      directionsMenu.dismiss(animated: true, completion: nil)
     }
     
-    let chooseAppleMaps = UIAlertAction(title: "", style: .default) { _ in
+    let chooseAppleMaps = UIAlertAction(title: "With Apple Maps", style: .default) { _ in
       MapManager.ExternalMapDirectionsProvider.apple.getDirections(from: from, to: to)
-      self.wrapper.mapManager?.showDirectionsUsing(
-        provider: .apple,
-        from: from,
-        to: to
-      )
       dismissAlert()
     }
-    alertViewController.addAction(chooseAppleMaps)
-    let chooseGoogleMaps = UIAlertAction(title: "", style: .default) { _ in
+    directionsMenu.addAction(chooseAppleMaps)
+    let chooseGoogleMaps = UIAlertAction(title: "With Google Maps", style: .default) { _ in
       MapManager.ExternalMapDirectionsProvider.google.getDirections(from: from, to: to)
-      self.wrapper.mapManager?.showDirectionsUsing(
-        provider: .apple,
-        from: from,
-        to: to
-      )
       dismissAlert()
     }
-    alertViewController.addAction(chooseGoogleMaps)
-    let cancel = UIAlertAction(title: "", style: .cancel) { _ in
+    directionsMenu.addAction(chooseGoogleMaps)
+    let cancel = UIAlertAction(title: "Cancel", style: .cancel) { _ in
       dismissAlert()
     }
-    alertViewController.addAction(cancel)
+    directionsMenu.addAction(cancel)
     present(
-      alertViewController,
+      directionsMenu,
       animated: true,
       completion: nil
     )

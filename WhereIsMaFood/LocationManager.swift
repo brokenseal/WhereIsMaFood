@@ -15,12 +15,15 @@ class LocationManager: NSObject {
   private let clLocationManager = CLLocationManager()
   var lastLocation: CLLocation?
   
-  override init() {
+  init(
+    distanceFilter: Double = 200.0,
+    accuracy: CLLocationAccuracy = kCLLocationAccuracyNearestTenMeters
+  ) {
     super.init()
     
     clLocationManager.delegate = self
-    clLocationManager.distanceFilter = 200.0 // update every # meters
-    clLocationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+    clLocationManager.distanceFilter = distanceFilter // update every # meters
+    clLocationManager.desiredAccuracy = accuracy
   }
   
   func initiate() {
