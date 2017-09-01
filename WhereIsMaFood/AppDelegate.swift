@@ -12,6 +12,16 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
   var app: App?
+  
+  static func getIntroductionStoryboard() -> UIStoryboard {
+    return UIStoryboard(name: "Introduction", bundle: nil)
+  }
+  static func getMainStoryboard() -> UIStoryboard {
+    return UIStoryboard(name: "Main", bundle: nil)
+  }
+  static func getDebugStoryboard() -> UIStoryboard {
+    return UIStoryboard(name: "Debug", bundle: nil)
+  }
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
@@ -22,7 +32,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       fatalError("Unable to instantiate App")
     }
     
+    startDebugger()
+    setupCorrectStoryBoard(debug: false)
+    
     return true
+  }
+  
+  func startDebugger(){
+    let _ = app!.onAny() { notification in
+      self.app!.logger.log(notification)
+    }
+  }
+  
+  func setupCorrectStoryBoard(debug: Bool){
+    //let storyBoardToUse = debug ? AppDelegate.getDebugStoryboard : AppDelegate.getMainStoryboard()
+    let storyBoardToUse = AppDelegate.getIntroductionStoryboard()
+    let rootController = storyBoardToUse.instantiateInitialViewController()
+    
+    self.window?.rootViewController = rootController
+    self.window?.makeKeyAndVisible()
+ 
   }
 
   func applicationWillResignActive(_ application: UIApplication) {

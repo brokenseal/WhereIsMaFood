@@ -28,15 +28,23 @@ class SearchBarManager: NSObject {
     
     self.searchBar.delegate = self
   }
+  
+  func hideKeyboard(){
+    searchBar.resignFirstResponder()
+  }
 }
 
 extension SearchBarManager: UISearchBarDelegate {
   func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-    searchBar.resignFirstResponder()
+    hideKeyboard()
   }
+  
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-    searchBar.resignFirstResponder()
-    lastSearchQuery = searchBar.text ?? ""
+    hideKeyboard()
+  }
+  
+  func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    lastSearchQuery = searchText
     textDidChangeListener(lastSearchQuery)
   }
 }

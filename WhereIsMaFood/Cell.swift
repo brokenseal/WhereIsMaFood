@@ -14,6 +14,7 @@ class RestaurantTableCell: UITableViewCell {
   @IBOutlet weak var url: UILabel!
   @IBOutlet weak var showWebsite: UIBarButtonItem!
   @IBOutlet weak var toolbar: UIToolbar!
+  @IBOutlet weak var showDirectionsLabel: UIBarButtonItem!
   
   var restaurantData: RestaurantData?
   
@@ -25,9 +26,15 @@ class RestaurantTableCell: UITableViewCell {
     
     if let url = restaurantData.url {
       self.url.text = url.absoluteString
+    } else {
+      self.url.text = ""
     }
     
-    self.backgroundColor = isSelected ? UIColor.lightGray : nil
+    if isSelected {
+      self.backgroundColor = darkOrange
+    } else {
+      self.backgroundColor = nil
+    }
     toolbar.isHidden = !isSelected
     showWebsite.isEnabled = restaurantData.url != nil && isSelected == true
   }

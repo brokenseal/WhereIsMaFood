@@ -80,8 +80,15 @@ class MapManager: NSObject {
     map.delegate = self
   }
   
-  func getCurrentRegion() -> MKCoordinateRegion {
-    return map.region
+  func getCurrentRegion(
+    using coordinate: CLLocationCoordinate2D
+  ) -> MKCoordinateRegion {
+    return MKCoordinateRegionMakeWithDistance(
+      coordinate,
+      regionRadius * 2,
+      regionRadius * 2
+    )
+    //return map.region
   }
 
   func showRegion(latitude: Double, longitude: Double){
@@ -157,26 +164,6 @@ class MapManager: NSObject {
 
 // MARK: map view delegate extension
 extension MapManager: MKMapViewDelegate {
-  func mapView(
-    _ mapView: MKMapView,
-    didAdd views: [MKAnnotationView]
-  ) {
-    //addInformationButtonTo(views)
-  }
-  
-  func addInformationButtonTo(_ views: [MKAnnotationView]){
-    for annotationView in views {
-      let button = UIButton(type: .detailDisclosure)
-      annotationView.canShowCallout = true
-      annotationView.rightCalloutAccessoryView = button
-      button.addTarget(
-        self,
-        action: #selector(MapManager.showDirectionsUsingCurrentLocations),
-        for: UIControlEvents.touchDown
-      )
-    }
-  }
-  
   func getLocationsForDirections() -> (CLLocation, CLLocation)? {
     guard let currentlySelectedPin = getCurrentlySelectedPin(),
       let userLocation = map.userLocation.location else { return nil }

@@ -34,17 +34,26 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="PD0-H2-anO">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
                                         <subviews>
-                                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="eYi-Ze-lfo">
+                                            <searchBar contentMode="redraw" placeholder="Search restaurants" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eYi-Ze-lfo">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="272"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                <scopeButtonTitles>
+                                                    <string>Title</string>
+                                                    <string>Title</string>
+                                                </scopeButtonTitles>
                                             </searchBar>
                                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8XN-tZ-pd0">
                                                 <rect key="frame" x="0.0" y="272" width="375" height="128"/>
+                                                <gestureRecognizers/>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="tyc-bE-ySK" appends="YES" id="O4x-ht-DCX"/>
+                                                </connections>
                                             </mapView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="PD0-H2-anO" firstAttribute="leading" secondItem="JXE-Oj-HGO" secondAttribute="leading" id="0cH-Tj-DQ4"/>
                                     <constraint firstAttribute="bottom" secondItem="PD0-H2-anO" secondAttribute="bottom" id="EdY-yK-kqD"/>
@@ -54,6 +63,7 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="1jl-Q9-yf9" secondAttribute="trailing" id="CPl-Oj-y9T"/>
                             <constraint firstItem="JXE-Oj-HGO" firstAttribute="top" secondItem="tNX-2Z-brs" secondAttribute="bottom" id="I8k-DH-qEw"/>
@@ -72,8 +82,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6nK-yV-6H4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="tyc-bE-ySK">
+                    <connections>
+                        <action selector="onTap:" destination="ryh-4a-wib" id="dQ7-6g-rzx"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-228" y="-363"/>
+            <point key="canvasLocation" x="-670" y="-440"/>
         </scene>
         <!--Restaurant Table View Controller-->
         <scene sceneID="CJn-3u-YwD">
@@ -109,7 +124,7 @@
                                             <items>
                                                 <barButtonItem title="Show Website" id="Jy8-RB-OgC">
                                                     <connections>
-                                                        <segue destination="Eug-7c-cxb" kind="presentation" id="ZQM-Yh-0kd"/>
+                                                        <segue destination="Eug-7c-cxb" kind="presentation" identifier="showWebsite" id="ZQM-Yh-0kd"/>
                                                     </connections>
                                                 </barButtonItem>
                                                 <barButtonItem style="plain" systemItem="flexibleSpace" id="nX3-h3-Rb6"/>
@@ -133,6 +148,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="restaurantName" destination="5QK-Tt-fjI" id="Bbw-2a-rRy"/>
+                                    <outlet property="showDirectionsLabel" destination="Uu8-cE-Su9" id="3Nn-iL-PNr"/>
                                     <outlet property="showWebsite" destination="Jy8-RB-OgC" id="Ffy-PJ-rM0"/>
                                     <outlet property="toolbar" destination="ETe-HN-yEl" id="WDT-BM-ANV"/>
                                     <outlet property="url" destination="dmt-Er-zkD" id="9k9-jL-SeV"/>
@@ -147,7 +163,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ceL-I1-hUf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="541.60000000000002" y="-220.83958020989508"/>
+            <point key="canvasLocation" x="162" y="-251"/>
         </scene>
         <!--Show Website Modal View Controller-->
         <scene sceneID="wnP-uE-Dc1">
@@ -198,7 +214,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yfE-e0-Gly" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1313" y="-220"/>
+            <point key="canvasLocation" x="1031" y="-251"/>
         </scene>
     </scenes>
 </document>

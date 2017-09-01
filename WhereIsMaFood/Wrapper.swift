@@ -65,10 +65,12 @@ class RestaurantTableWrapper: UIViewController {
   func refreshTable(){
     guard let dataSource = dataSource,
       let mapManager = mapManager,
-      let searchBarManager = searchBarManager else { return }
+      let searchBarManager = searchBarManager,
+      let coordinate = App.main!.locationManager.lastLocation?.coordinate
+      else { return }
     
     dataSource.updateData(
-      for: mapManager.getCurrentRegion(),
+      for: mapManager.getCurrentRegion(using: coordinate),
       searchQuery: searchBarManager.lastSearchQuery
     )
   }
@@ -96,6 +98,10 @@ class RestaurantTableWrapper: UIViewController {
     mapManager.addPins(pinsData)
   }
   
+  @IBAction func onTap(_ sender: Any) {
+    searchBarManager?.hideKeyboard()
+  }
+  
   func setupListeners() {
     // not sure what might happen here, let's lean on the safe side
     tearDownUnsubscribers()
@@ -111,34 +117,21 @@ class RestaurantTableWrapper: UIViewController {
     unsubscribers.append(dataSourceUnsubscriber)
     
     // LISTENER: update map when a new location is received, but only once, at the beginning
-    let newLocationUnsubscriberOnce = App.main.once(
-      App.Message.newLocation
-    ) { [weak self] notification in
-      self?.refreshTable()
-      
-      guard let location = notification.object as? CLLocation,
-        let mapManager = self?.mapManager else { return }
-      
-      mapManager.showRegion(
-        latitude: location.coordinate.latitude,
-        longitude: location.coordinate.longitude
-      )
-    }
-    unsubscribers.append(newLocationUnsubscriberOnce)
-    
-    // LISTENER: update map when a new location is received, but only once, at the beginning
+    var firstLoad = true
     let newLocationUnsubscriber = App.main.on(
       App.Message.newLocation
     ) { [weak self] notification in
       guard let location = notification.object as? CLLocation,
         let mapManager = self?.mapManager else { return }
       
-      // TODO/FIXME: not sure about this one, the problem that I'm trying to fix is that the map region
-      // is not updated along with the location, at the same time, but rather later
       mapManager.showRegion(
         latitude: location.coordinate.latitude,
         longitude: location.coordinate.longitude
       )
+      if firstLoad {
+        firstLoad = false
+        self?.refreshTable()
+      }
     }
     unsubscribers.append(newLocationUnsubscriber)
 

@@ -23,9 +23,15 @@
 		ADA2795A1F17CEA900F9B318 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADA279591F17CEA900F9B318 /* Assets.xcassets */; };
 		ADA279821F17D64100F9B318 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA279811F17D64100F9B318 /* MapManager.swift */; };
 		ADA279841F17D70F00F9B318 /* AlertsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA279831F17D70F00F9B318 /* AlertsManager.swift */; };
+		ADA862D01F5926B900066406 /* Introduction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADA862CF1F5926B900066406 /* Introduction.storyboard */; };
+		ADA862D21F592F7300066406 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA862D11F592F7300066406 /* Colors.swift */; };
+		ADA862D41F59B93400066406 /* IntroductionPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA862D31F59B93400066406 /* IntroductionPageViewController.swift */; };
 		ADCF87B11F1D3F5900F4188C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADCF87B01F1D3F5900F4188C /* MapKit.framework */; };
+		ADD28BEC1F55CE1400703E77 /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADD28BEB1F55CE1400703E77 /* Debug.storyboard */; };
 		ADE77D3A1F20746200C06C16 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE77D391F20746200C06C16 /* Utils.swift */; };
 		ADEA92631F2F3EF3006DC727 /* SearchBarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEA92621F2F3EF3006DC727 /* SearchBarManager.swift */; };
+		ADFAB8781F53E9250035C77A /* LoggerControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFAB8771F53E9250035C77A /* LoggerControllers.swift */; };
+		ADFAB87A1F53E9A50035C77A /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFAB8791F53E9A50035C77A /* Logger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,9 +69,15 @@
 		ADA2795E1F17CEA900F9B318 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADA279811F17D64100F9B318 /* MapManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
 		ADA279831F17D70F00F9B318 /* AlertsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertsManager.swift; sourceTree = "<group>"; };
+		ADA862CF1F5926B900066406 /* Introduction.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Introduction.storyboard; sourceTree = "<group>"; };
+		ADA862D11F592F7300066406 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		ADA862D31F59B93400066406 /* IntroductionPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionPageViewController.swift; sourceTree = "<group>"; };
 		ADCF87B01F1D3F5900F4188C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		ADD28BEB1F55CE1400703E77 /* Debug.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Debug.storyboard; sourceTree = "<group>"; };
 		ADE77D391F20746200C06C16 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		ADEA92621F2F3EF3006DC727 /* SearchBarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarManager.swift; sourceTree = "<group>"; };
+		ADFAB8771F53E9250035C77A /* LoggerControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerControllers.swift; sourceTree = "<group>"; };
+		ADFAB8791F53E9A50035C77A /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		AE111C773CA3690CD558DAF6 /* Pods_WhereIsMaFood_WhereIsMaFoodTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhereIsMaFood_WhereIsMaFoodTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -118,6 +130,7 @@
 				AD34AE7B1F2B0C31002DD9FA /* LocationManager.swift */,
 				ADA279831F17D70F00F9B318 /* AlertsManager.swift */,
 				ADEA92621F2F3EF3006DC727 /* SearchBarManager.swift */,
+				ADFAB8791F53E9A50035C77A /* Logger.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -139,6 +152,7 @@
 				AD854A691F1D4452000572CC /* Controllers */,
 				AD854A681F1D4438000572CC /* StoryBoards */,
 				ADE77D391F20746200C06C16 /* Utils.swift */,
+				ADA862D11F592F7300066406 /* Colors.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -146,7 +160,9 @@
 		AD854A681F1D4438000572CC /* StoryBoards */ = {
 			isa = PBXGroup;
 			children = (
+				ADA862CF1F5926B900066406 /* Introduction.storyboard */,
 				AD44BDE41F3066B400D75FA3 /* Main.storyboard */,
+				ADD28BEB1F55CE1400703E77 /* Debug.storyboard */,
 			);
 			name = StoryBoards;
 			sourceTree = "<group>";
@@ -155,6 +171,8 @@
 			isa = PBXGroup;
 			children = (
 				AD1ED8091F3C23BB00BEE96B /* Restaurant */,
+				ADFAB8771F53E9250035C77A /* LoggerControllers.swift */,
+				ADA862D31F59B93400066406 /* IntroductionPageViewController.swift */,
 				AD70506A1F3A11F200D5EA2A /* ShowWebsiteModalViewController.swift */,
 			);
 			name = Controllers;
@@ -308,6 +326,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADA862D01F5926B900066406 /* Introduction.storyboard in Resources */,
+				ADD28BEC1F55CE1400703E77 /* Debug.storyboard in Resources */,
 				AD44BDE51F3066B500D75FA3 /* Main.storyboard in Resources */,
 				ADA2795A1F17CEA900F9B318 /* Assets.xcassets in Resources */,
 			);
@@ -430,7 +450,11 @@
 				ADA279841F17D70F00F9B318 /* AlertsManager.swift in Sources */,
 				AD854A6B1F1D447E000572CC /* App.swift in Sources */,
 				ADA279531F17CEA900F9B318 /* AppDelegate.swift in Sources */,
+				ADA862D21F592F7300066406 /* Colors.swift in Sources */,
 				AD7050691F38E8EC00D5EA2A /* Wrapper.swift in Sources */,
+				ADFAB87A1F53E9A50035C77A /* Logger.swift in Sources */,
+				ADA862D41F59B93400066406 /* IntroductionPageViewController.swift in Sources */,
+				ADFAB8781F53E9250035C77A /* LoggerControllers.swift in Sources */,
 				AD34AE7C1F2B0C31002DD9FA /* LocationManager.swift in Sources */,
 				ADEA92631F2F3EF3006DC727 /* SearchBarManager.swift in Sources */,
 				AD70506B1F3A11F200D5EA2A /* ShowWebsiteModalViewController.swift in Sources */,
