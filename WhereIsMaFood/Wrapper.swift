@@ -39,6 +39,7 @@ class RestaurantTableWrapper: UIViewController {
     searchBarManager = SearchBarManager(self.searchBar) { [weak self] _ in
       self?.refreshTable()
     }
+    searchBar.tintColor = darkOrange
     
     setupRefreshController()
     setupListeners()

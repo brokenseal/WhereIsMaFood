@@ -30,11 +30,6 @@ class RestaurantTableCell: UITableViewCell {
       self.url.text = ""
     }
     
-    if isSelected {
-      self.backgroundColor = darkOrange
-    } else {
-      self.backgroundColor = nil
-    }
     toolbar.isHidden = !isSelected
     showWebsite.isEnabled = restaurantData.url != nil && isSelected == true
   }

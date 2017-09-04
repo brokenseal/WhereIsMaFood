@@ -22,6 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   static func getDebugStoryboard() -> UIStoryboard {
     return UIStoryboard(name: "Debug", bundle: nil)
   }
+  static func hasUserSeenIntroduction() -> Bool {
+    return UserDefaults.standard.object(forKey: "HasSeenIntroduction") as? Bool ?? false
+  }
+  static func setUserHasSeenIntroduction(){
+    UserDefaults.standard.set(true, forKey: "HasSeenIntroduction")
+  }
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
@@ -45,8 +51,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
   
   func setupCorrectStoryBoard(debug: Bool){
-    //let storyBoardToUse = debug ? AppDelegate.getDebugStoryboard : AppDelegate.getMainStoryboard()
-    let storyBoardToUse = AppDelegate.getIntroductionStoryboard()
+    var storyBoardToUse: UIStoryboard
+    
+    if debug {
+      storyBoardToUse = AppDelegate.getDebugStoryboard()
+    } else if !AppDelegate.hasUserSeenIntroduction(){
+      storyBoardToUse = AppDelegate.getIntroductionStoryboard()
+      AppDelegate.setUserHasSeenIntroduction()
+    } else {
+      storyBoardToUse = AppDelegate.getMainStoryboard()
+    }
+    
     let rootController = storyBoardToUse.instantiateInitialViewController()
     
     self.window?.rootViewController = rootController

@@ -34,8 +34,9 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="PD0-H2-anO">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
                                         <subviews>
-                                            <searchBar contentMode="redraw" placeholder="Search restaurants" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eYi-Ze-lfo">
+                                            <searchBar contentMode="redraw" placeholder="Search restaurants near you" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eYi-Ze-lfo">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="272"/>
+                                                <color key="barTintColor" red="1" green="0.61332501769825531" blue="0.019496686916404715" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                 <scopeButtonTitles>
                                                     <string>Title</string>

@@ -6,153 +6,85 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13147.4"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="9uW-ae-8rb">
-            <objects>
-                <viewController storyboardIdentifier="Page1" id="V7o-cu-fuU" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="9KB-Bb-kUm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Big Salad" translatesAutoresizingMaskIntoConstraints="NO" id="nnx-DS-4r0">
-                                <rect key="frame" x="0.0" y="20" width="375" height="300"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="9LQ-Zy-IiF"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to MaFood!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RBR-K4-FhQ">
-                                <rect key="frame" x="0.0" y="336" width="375" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VZH-iJ-a7e">
-                                <rect key="frame" x="16" y="387" width="343" height="93"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="RBR-K4-FhQ" firstAttribute="leading" secondItem="bl0-sm-6pr" secondAttribute="leading" id="0E3-TQ-v7V"/>
-                            <constraint firstItem="bl0-sm-6pr" firstAttribute="trailing" secondItem="RBR-K4-FhQ" secondAttribute="trailing" id="3W1-ZG-FEE"/>
-                            <constraint firstItem="nnx-DS-4r0" firstAttribute="leading" secondItem="bl0-sm-6pr" secondAttribute="leading" id="64T-qU-RRc"/>
-                            <constraint firstItem="RBR-K4-FhQ" firstAttribute="top" secondItem="nnx-DS-4r0" secondAttribute="bottom" constant="16" id="SfI-9N-6Ki"/>
-                            <constraint firstItem="bl0-sm-6pr" firstAttribute="trailing" secondItem="nnx-DS-4r0" secondAttribute="trailing" id="bfe-SO-esN"/>
-                            <constraint firstItem="nnx-DS-4r0" firstAttribute="top" secondItem="bl0-sm-6pr" secondAttribute="top" id="c2B-r4-fQs"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="bl0-sm-6pr"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6dy-mx-k5m" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1026.4000000000001" y="970.16491754122944"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="oYd-GM-Dv6">
-            <objects>
-                <viewController storyboardIdentifier="Page2" id="sac-6h-PD3" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="wzY-1s-ffg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Big Burger" translatesAutoresizingMaskIntoConstraints="NO" id="cIF-Kk-KfF">
-                                <rect key="frame" x="0.0" y="20" width="375" height="300"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="cHk-95-frP"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to MaFood!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbA-Ma-qq4">
-                                <rect key="frame" x="0.0" y="336" width="375" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bTl-x2-W9a">
-                                <rect key="frame" x="16" y="392" width="343" height="93"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="cbA-Ma-qq4" firstAttribute="leading" secondItem="YRh-hP-XUW" secondAttribute="leading" id="D67-jc-ZrL"/>
-                            <constraint firstItem="cIF-Kk-KfF" firstAttribute="leading" secondItem="wzY-1s-ffg" secondAttribute="leading" id="Dcg-QS-R1U"/>
-                            <constraint firstItem="cIF-Kk-KfF" firstAttribute="top" secondItem="YRh-hP-XUW" secondAttribute="top" id="Hub-Gq-K0S"/>
-                            <constraint firstItem="YRh-hP-XUW" firstAttribute="trailing" secondItem="cIF-Kk-KfF" secondAttribute="trailing" id="R3D-Vs-dZ6"/>
-                            <constraint firstItem="cbA-Ma-qq4" firstAttribute="top" secondItem="cIF-Kk-KfF" secondAttribute="bottom" constant="16" id="qhS-ko-La2"/>
-                            <constraint firstAttribute="trailing" secondItem="cbA-Ma-qq4" secondAttribute="trailing" id="z8L-uf-Br8"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="YRh-hP-XUW"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yYU-zy-KXd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-34.399999999999999" y="969.26536731634189"/>
-        </scene>
-        <!--View Controller-->
+        <!--Page View Controller-->
         <scene sceneID="UP8-E2-afQ">
             <objects>
-                <viewController storyboardIdentifier="Page3" id="dgI-E5-vdb" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Page" id="dgI-E5-vdb" customClass="PageViewController" customModule="WhereIsMaFood" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="n8G-Yl-Zqg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Big Sushi" translatesAutoresizingMaskIntoConstraints="NO" id="2Cr-w6-SbD">
-                                <rect key="frame" x="0.0" y="20" width="375" height="300"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Cr-w6-SbD">
+                                <rect key="frame" x="32" y="20" width="311" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="8vA-ZG-3Gh"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="300" id="dF8-Ib-LOz"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to MaFood!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mUo-s2-3DU">
-                                <rect key="frame" x="0.0" y="336" width="375" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Placeholder for the title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mUo-s2-3DU">
+                                <rect key="frame" x="0.0" y="352" width="375" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OjI-nf-TRU">
-                                <rect key="frame" x="16" y="403" width="343" height="93"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Placeholder for the description blah blah blah blah blah blah blah blah blah blah blah blah blah blah " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OjI-nf-TRU">
+                                <rect key="frame" x="32" y="413" width="295" height="72"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IKL-ZL-9YY">
                                 <rect key="frame" x="0.0" y="615" width="375" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Show me the app!"/>
+                                <state key="normal" title="Let's start!"/>
                                 <connections>
-                                    <segue destination="WBf-Im-FCK" kind="show" id="cTY-66-Rf5"/>
+                                    <segue destination="WBf-Im-FCK" kind="show" identifier="showMeTheApp" id="cTY-66-Rf5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u6c-fj-RBw">
+                                <rect key="frame" x="0.0" y="547" width="375" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Open project on Github"/>
+                                <connections>
+                                    <action selector="openGithub:" destination="dgI-E5-vdb" eventType="touchUpInside" id="qyC-yB-2Em"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="IKL-ZL-9YY" firstAttribute="leading" secondItem="f0S-vr-fAo" secondAttribute="leading" id="1hP-yV-vcJ"/>
-                            <constraint firstItem="2Cr-w6-SbD" firstAttribute="leading" secondItem="f0S-vr-fAo" secondAttribute="leading" id="8gh-xr-FD5"/>
-                            <constraint firstItem="mUo-s2-3DU" firstAttribute="top" secondItem="2Cr-w6-SbD" secondAttribute="bottom" constant="16" id="Pj1-wg-8RR"/>
-                            <constraint firstAttribute="trailing" secondItem="2Cr-w6-SbD" secondAttribute="trailing" id="QXM-bc-fZc"/>
+                            <constraint firstItem="f0S-vr-fAo" firstAttribute="trailing" secondItem="u6c-fj-RBw" secondAttribute="trailing" id="66J-8X-N1U"/>
+                            <constraint firstItem="OjI-nf-TRU" firstAttribute="top" secondItem="mUo-s2-3DU" secondAttribute="bottom" constant="32" id="6l8-pn-UW5"/>
+                            <constraint firstItem="2Cr-w6-SbD" firstAttribute="leading" secondItem="f0S-vr-fAo" secondAttribute="leading" constant="32" id="8gh-xr-FD5"/>
+                            <constraint firstItem="mUo-s2-3DU" firstAttribute="top" secondItem="2Cr-w6-SbD" secondAttribute="bottom" constant="32" id="Pj1-wg-8RR"/>
+                            <constraint firstAttribute="trailing" secondItem="2Cr-w6-SbD" secondAttribute="trailing" constant="32" id="QXM-bc-fZc"/>
                             <constraint firstItem="f0S-vr-fAo" firstAttribute="bottom" secondItem="IKL-ZL-9YY" secondAttribute="bottom" constant="16" id="R7T-uE-uOb"/>
                             <constraint firstItem="mUo-s2-3DU" firstAttribute="leading" secondItem="f0S-vr-fAo" secondAttribute="leading" id="SAw-Rx-YKS"/>
                             <constraint firstItem="2Cr-w6-SbD" firstAttribute="top" secondItem="f0S-vr-fAo" secondAttribute="top" id="Toa-lM-CZL"/>
                             <constraint firstItem="mUo-s2-3DU" firstAttribute="trailing" secondItem="f0S-vr-fAo" secondAttribute="trailing" id="a6d-9z-HMm"/>
+                            <constraint firstItem="OjI-nf-TRU" firstAttribute="leading" secondItem="f0S-vr-fAo" secondAttribute="leading" constant="32" id="buq-ny-icP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OjI-nf-TRU" secondAttribute="trailing" constant="32" id="hHQ-h6-aZ3"/>
+                            <constraint firstItem="IKL-ZL-9YY" firstAttribute="top" secondItem="u6c-fj-RBw" secondAttribute="bottom" constant="32" id="i0Q-US-3Xv"/>
+                            <constraint firstItem="u6c-fj-RBw" firstAttribute="leading" secondItem="f0S-vr-fAo" secondAttribute="leading" id="xfL-gY-Pyv"/>
                             <constraint firstItem="f0S-vr-fAo" firstAttribute="trailing" secondItem="IKL-ZL-9YY" secondAttribute="trailing" id="y7T-hR-fwQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="f0S-vr-fAo"/>
                     </view>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="OjI-nf-TRU" id="3hT-yA-X32"/>
+                        <outlet property="githubButton" destination="u6c-fj-RBw" id="dNo-tH-psa"/>
+                        <outlet property="image" destination="2Cr-w6-SbD" id="q1T-5o-i2g"/>
+                        <outlet property="letsStartButton" destination="IKL-ZL-9YY" id="Wah-BQ-Ynb"/>
+                        <outlet property="titleLabel" destination="mUo-s2-3DU" id="gj3-02-I12"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8SL-WT-FPa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="968.79999999999995" y="969.26536731634189"/>
+            <point key="canvasLocation" x="807" y="262"/>
         </scene>
         <!--Main-->
         <scene sceneID="yUy-NN-JmC">
@@ -160,7 +92,7 @@
                 <viewControllerPlaceholder storyboardName="Main" id="WBf-Im-FCK" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3zj-VX-yrN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1689" y="1112"/>
+            <point key="canvasLocation" x="1502" y="261"/>
         </scene>
         <!--Introduction Page View Controller-->
         <scene sceneID="NhH-at-Cf7">
@@ -168,12 +100,7 @@
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="LNn-p1-KDf" customClass="IntroductionPageViewController" customModule="WhereIsMaFood" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DUI-Fd-TFH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="30" y="147"/>
+            <point key="canvasLocation" x="-34" y="263"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Big Burger" width="255" height="190"/>
-        <image name="Big Salad" width="253" height="238"/>
-        <image name="Big Sushi" width="254" height="136"/>
-    </resources>
 </document>
