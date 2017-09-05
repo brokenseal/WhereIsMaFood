@@ -134,4 +134,3 @@ class ErrorsManager {
     return NSError(domain: domain, code: 0, userInfo: ["Info": info])
   }
 }
-
