@@ -23,7 +23,7 @@ class LoggerTable: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let notification = App.main!.logger.logged[indexPath.row]
+    let notification = App.main.logger.logged[indexPath.row]
     let splitViewController = getTopViewController() as! LoggerSplitViewController
     
     loggerDetail.setup(notification: notification)
@@ -31,13 +31,13 @@ class LoggerTable: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return App.main!.logger.logged.count
+    return App.main.logger.logged.count
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "defaultCell") as! LoggerCell
-    let name = App.main!.logger.logged[indexPath.row].name.rawValue
-    let details = App.main!.logger.logged[indexPath.row].object!
+    let name = App.main.logger.logged[indexPath.row].name.rawValue
+    let details = App.main.logger.logged[indexPath.row].object!
     
     cell.setup(name: name, details: details)
     

@@ -59,7 +59,7 @@ class MapManager: NSObject {
           completionHandler: nil
         )
       } else {
-        App.main!.trigger(App.Message.warnUser, object: "Can't open directions app: is it installed?")
+        App.main.trigger(App.Message.warnUser, object: "Can't open directions app: is it installed?")
       }
     }
   }

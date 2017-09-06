@@ -67,7 +67,7 @@ class RestaurantTableWrapper: UIViewController {
     guard let dataSource = dataSource,
       let mapManager = mapManager,
       let searchBarManager = searchBarManager,
-      let coordinate = App.main!.locationManager.lastLocation?.coordinate
+      let coordinate = App.main.locationManager.lastLocation?.coordinate
       else { return }
     
     dataSource.updateData(
