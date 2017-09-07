@@ -9,7 +9,7 @@
 import Foundation
 
 class Logger: NSObject {
-  dynamic var logged: [Notification] = []
+  @objc dynamic var logged: [Notification] = []
   let name: String
   
   init(_ name: String) {

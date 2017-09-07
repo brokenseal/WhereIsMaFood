@@ -20,7 +20,7 @@ class SearchBarManager: NSObject {
   init(
     _ searchBar: UISearchBar,
     textDidChangeListener: @escaping SearchBarManagerTextDidChangeListener
-    ) {
+  ) {
     self.searchBar = searchBar
     self.textDidChangeListener = textDidChangeListener
     

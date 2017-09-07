@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13147.4"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -19,46 +18,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oUS-eK-NwN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="936" y="-524"/>
-        </scene>
-        <!--Logger Detail-->
-        <scene sceneID="Ktd-0f-UYM">
-            <objects>
-                <viewController id="Yg2-WJ-abq" customClass="LoggerDetail" customModule="WhereIsMaFood" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ckC-wd-jRb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sYC-nA-7ai">
-                                <rect key="frame" x="0.0" y="64" width="375" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Details" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="igz-j6-rDI">
-                                <rect key="frame" x="16" y="123" width="343" height="404"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="sYC-nA-7ai" firstAttribute="leading" secondItem="t62-KI-Cxr" secondAttribute="leading" id="8Wj-sc-Icf"/>
-                            <constraint firstItem="sYC-nA-7ai" firstAttribute="top" secondItem="t62-KI-Cxr" secondAttribute="top" id="UQg-Nl-fo4"/>
-                            <constraint firstItem="t62-KI-Cxr" firstAttribute="trailing" secondItem="sYC-nA-7ai" secondAttribute="trailing" id="imn-Dv-Zoh"/>
-                            <constraint firstItem="sYC-nA-7ai" firstAttribute="centerX" secondItem="ckC-wd-jRb" secondAttribute="centerX" id="wfa-2o-EPb"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="t62-KI-Cxr"/>
-                    </view>
-                    <connections>
-                        <outlet property="details" destination="igz-j6-rDI" id="CNO-BH-qoP"/>
-                        <outlet property="name" destination="sYC-nA-7ai" id="Xio-xx-f62"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bDu-28-I75" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2151.1999999999998" y="447.52623688155927"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="X6L-E6-L9G">
@@ -109,41 +68,12 @@
                             <outlet property="delegate" destination="PBx-Uh-rRy" id="gUb-W5-wHE"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Item" id="BqN-TP-91X"/>
                     <navigationItem key="navigationItem" title="Root View Controller" id="KuG-1x-qTt"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y1N-uH-cc5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3103" y="-207"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="8K6-ov-ldN">
-            <objects>
-                <navigationController id="5Mm-e7-0Z6" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="v3x-wQ-w64">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="PBx-Uh-rRy" kind="relationship" relationship="rootViewController" id="W72-eP-ccb"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="a7J-eW-6Ax" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2152" y="-208"/>
-        </scene>
-        <!--Item-->
-        <scene sceneID="0oE-zx-2mt">
-            <objects>
-                <splitViewController id="z5a-z9-CJz" customClass="LoggerSplitViewController" customModule="WhereIsMaFood" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="UJc-XK-fOH"/>
-                    <connections>
-                        <segue destination="5Mm-e7-0Z6" kind="relationship" relationship="masterViewController" id="Abn-bd-Wij"/>
-                        <segue destination="Yg2-WJ-abq" kind="relationship" relationship="detailViewController" id="nWU-im-Yia"/>
-                    </connections>
-                </splitViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ce5-XP-zJk" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1200" y="119"/>
+            <point key="canvasLocation" x="1511" y="136"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="pTb-QP-ujW">
@@ -156,7 +86,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="Oc8-6F-KqU" kind="relationship" relationship="viewControllers" id="dMG-AZ-fH5"/>
-                        <segue destination="z5a-z9-CJz" kind="relationship" relationship="viewControllers" id="evX-Bd-6OG"/>
+                        <segue destination="PBx-Uh-rRy" kind="relationship" relationship="viewControllers" id="ZS6-XN-9u4"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k05-hu-IcS" userLabel="First Responder" sceneMemberID="firstResponder"/>

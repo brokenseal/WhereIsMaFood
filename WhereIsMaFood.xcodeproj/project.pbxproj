@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AD34AE761F29AE79002DD9FA /* RestaurantsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD34AE751F29AE79002DD9FA /* RestaurantsDataSource.swift */; };
 		AD34AE7C1F2B0C31002DD9FA /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD34AE7B1F2B0C31002DD9FA /* LocationManager.swift */; };
+		AD3A5CA91F610EA20021557C /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3A5CA81F610EA20021557C /* Core.swift */; };
 		AD44BDE51F3066B500D75FA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD44BDE41F3066B400D75FA3 /* Main.storyboard */; };
 		AD7050651F38BAF500D5EA2A /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7050641F38BAF500D5EA2A /* Cell.swift */; };
 		AD7050691F38E8EC00D5EA2A /* Wrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7050681F38E8EC00D5EA2A /* Wrapper.swift */; };
@@ -24,25 +25,15 @@
 		ADA862D41F59B93400066406 /* IntroductionPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA862D31F59B93400066406 /* IntroductionPageViewController.swift */; };
 		ADCF87B11F1D3F5900F4188C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADCF87B01F1D3F5900F4188C /* MapKit.framework */; };
 		ADD28BEC1F55CE1400703E77 /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADD28BEB1F55CE1400703E77 /* Debug.storyboard */; };
-		ADE77D3A1F20746200C06C16 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE77D391F20746200C06C16 /* Utils.swift */; };
 		ADEA92631F2F3EF3006DC727 /* SearchBarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEA92621F2F3EF3006DC727 /* SearchBarManager.swift */; };
 		ADFAB8781F53E9250035C77A /* LoggerControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFAB8771F53E9250035C77A /* LoggerControllers.swift */; };
 		ADFAB87A1F53E9A50035C77A /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFAB8791F53E9A50035C77A /* Logger.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		AD4208D01F22568B00671FE8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = ADA279471F17CEA900F9B318 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = ADA2794E1F17CEA900F9B318;
-			remoteInfo = WhereIsMaFood;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		AD34AE751F29AE79002DD9FA /* RestaurantsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantsDataSource.swift; sourceTree = "<group>"; };
 		AD34AE7B1F2B0C31002DD9FA /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		AD3A5CA81F610EA20021557C /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
 		AD44BDE41F3066B400D75FA3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		AD7050641F38BAF500D5EA2A /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		AD7050681F38E8EC00D5EA2A /* Wrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wrapper.swift; sourceTree = "<group>"; };
@@ -60,20 +51,12 @@
 		ADA862D31F59B93400066406 /* IntroductionPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionPageViewController.swift; sourceTree = "<group>"; };
 		ADCF87B01F1D3F5900F4188C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		ADD28BEB1F55CE1400703E77 /* Debug.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Debug.storyboard; sourceTree = "<group>"; };
-		ADE77D391F20746200C06C16 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		ADEA92621F2F3EF3006DC727 /* SearchBarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarManager.swift; sourceTree = "<group>"; };
 		ADFAB8771F53E9250035C77A /* LoggerControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerControllers.swift; sourceTree = "<group>"; };
 		ADFAB8791F53E9A50035C77A /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		AD4208C81F22568B00671FE8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		ADA2794C1F17CEA900F9B318 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -114,7 +97,6 @@
 				ADA279521F17CEA900F9B318 /* AppDelegate.swift */,
 				AD854A691F1D4452000572CC /* Controllers */,
 				AD854A681F1D4438000572CC /* StoryBoards */,
-				ADE77D391F20746200C06C16 /* Utils.swift */,
 				ADA862D11F592F7300066406 /* Colors.swift */,
 			);
 			name = UI;
@@ -169,6 +151,7 @@
 				AD34AE7D1F2B8922002DD9FA /* Managers */,
 				AD854A671F1D442D000572CC /* UI */,
 				ADA2795E1F17CEA900F9B318 /* Info.plist */,
+				AD3A5CA81F610EA20021557C /* Core.swift */,
 			);
 			path = WhereIsMaFood;
 			sourceTree = "<group>";
@@ -208,16 +191,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Davide Callegari";
 				TargetAttributes = {
-					AD4208CA1F22568B00671FE8 = {
-						CreatedOnToolsVersion = 8.3.3;
-						ProvisioningStyle = Automatic;
-						TestTargetID = ADA2794E1F17CEA900F9B318;
-					};
 					ADA2794E1F17CEA900F9B318 = {
 						CreatedOnToolsVersion = 8.3.3;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
@@ -246,13 +225,6 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		AD4208C91F22568B00671FE8 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		ADA2794D1F17CEA900F9B318 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -266,24 +238,13 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		AD4208C71F22568B00671FE8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		ADA2794B1F17CEA900F9B318 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				ADA279551F17CEA900F9B318 /* Table.swift in Sources */,
 				ADA279821F17D64100F9B318 /* MapManager.swift in Sources */,
-				ADE77D3A1F20746200C06C16 /* Utils.swift in Sources */,
 				AD7050651F38BAF500D5EA2A /* Cell.swift in Sources */,
 				AD34AE761F29AE79002DD9FA /* RestaurantsDataSource.swift in Sources */,
 				ADA279841F17D70F00F9B318 /* AlertsManager.swift in Sources */,
@@ -296,19 +257,12 @@
 				ADFAB8781F53E9250035C77A /* LoggerControllers.swift in Sources */,
 				AD34AE7C1F2B0C31002DD9FA /* LocationManager.swift in Sources */,
 				ADEA92631F2F3EF3006DC727 /* SearchBarManager.swift in Sources */,
+				AD3A5CA91F610EA20021557C /* Core.swift in Sources */,
 				AD70506B1F3A11F200D5EA2A /* ShowWebsiteModalViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		AD4208D11F22568B00671FE8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = ADA2794E1F17CEA900F9B318 /* WhereIsMaFood */;
-			targetProxy = AD4208D01F22568B00671FE8 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		ADA279761F17CEAA00F9B318 /* Release */ = {
@@ -321,7 +275,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -329,7 +285,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -350,6 +310,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -364,7 +325,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.brokenseal.WhereIsMaFood.WhereIsMaFood;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

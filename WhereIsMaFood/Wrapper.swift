@@ -63,7 +63,7 @@ class RestaurantTableWrapper: UIViewController {
     )
   }
   
-  func refreshTable(){
+  @objc func refreshTable(){
     guard let dataSource = dataSource,
       let mapManager = mapManager,
       let searchBarManager = searchBarManager,
@@ -141,12 +141,12 @@ class RestaurantTableWrapper: UIViewController {
       App.Message.warnUser
     ) { [weak self] notification in
       // FIXME: bail out?
-      guard let _ = self, let message = notification.object as? String else { return }
+      guard let this = self, let message = notification.object as? String else { return }
       
       AlertsManager.simple(
         title: "Warning!",
         message: message
-      ).alert.show(using: self)
+      ).show(using: this)
     }
     unsubscribers.append(alertsUnsubscriber)
     
