@@ -88,7 +88,6 @@ class MapManager: NSObject {
       regionRadius * 2,
       regionRadius * 2
     )
-    //return map.region
   }
 
   func showRegion(latitude: Double, longitude: Double){
@@ -102,6 +101,13 @@ class MapManager: NSObject {
       regionRadius * 2
     )
     map.setRegion(region, animated: true)
+  }
+  
+  func centerMapToUser(){
+    showRegion(
+      latitude: map.userLocation.coordinate.latitude,
+      longitude: map.userLocation.coordinate.longitude
+    )
   }
 
   func addPin(_ pin: Pin){

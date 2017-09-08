@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		AD34AE761F29AE79002DD9FA /* RestaurantsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD34AE751F29AE79002DD9FA /* RestaurantsDataSource.swift */; };
 		AD34AE7C1F2B0C31002DD9FA /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD34AE7B1F2B0C31002DD9FA /* LocationManager.swift */; };
-		AD3A5CA91F610EA20021557C /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3A5CA81F610EA20021557C /* Core.swift */; };
 		AD44BDE51F3066B500D75FA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD44BDE41F3066B400D75FA3 /* Main.storyboard */; };
 		AD7050651F38BAF500D5EA2A /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7050641F38BAF500D5EA2A /* Cell.swift */; };
 		AD7050691F38E8EC00D5EA2A /* Wrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7050681F38E8EC00D5EA2A /* Wrapper.swift */; };
@@ -33,7 +32,6 @@
 /* Begin PBXFileReference section */
 		AD34AE751F29AE79002DD9FA /* RestaurantsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantsDataSource.swift; sourceTree = "<group>"; };
 		AD34AE7B1F2B0C31002DD9FA /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		AD3A5CA81F610EA20021557C /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
 		AD44BDE41F3066B400D75FA3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		AD7050641F38BAF500D5EA2A /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		AD7050681F38E8EC00D5EA2A /* Wrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wrapper.swift; sourceTree = "<group>"; };
@@ -151,7 +149,6 @@
 				AD34AE7D1F2B8922002DD9FA /* Managers */,
 				AD854A671F1D442D000572CC /* UI */,
 				ADA2795E1F17CEA900F9B318 /* Info.plist */,
-				AD3A5CA81F610EA20021557C /* Core.swift */,
 			);
 			path = WhereIsMaFood;
 			sourceTree = "<group>";
@@ -257,7 +254,6 @@
 				ADFAB8781F53E9250035C77A /* LoggerControllers.swift in Sources */,
 				AD34AE7C1F2B0C31002DD9FA /* LocationManager.swift in Sources */,
 				ADEA92631F2F3EF3006DC727 /* SearchBarManager.swift in Sources */,
-				AD3A5CA91F610EA20021557C /* Core.swift in Sources */,
 				AD70506B1F3A11F200D5EA2A /* ShowWebsiteModalViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

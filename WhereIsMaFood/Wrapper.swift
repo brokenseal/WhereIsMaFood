@@ -15,6 +15,7 @@ class RestaurantTableWrapper: UIViewController {
   @IBOutlet weak var searchBar: UISearchBar!
   @IBOutlet weak var restaurantTableContainer: UIView!
   
+  let centerMapImageView = UIImageView(image: #imageLiteral(resourceName: "Big Donut"))
   var unsubscribers: [Unsubscriber] = []
   var dataSource: RestaurantsDataSource?
   var mapManager: MapManager?
@@ -47,12 +48,47 @@ class RestaurantTableWrapper: UIViewController {
     restaurantTableViewController.setup(
       dataSource: dataSource!
     )
+    addCenterMapImageView()
   }
   
   func start(){
     App.main.locationManager.initiate()
   }
   
+  func addCenterMapImageView(){
+    let size = CGSize(width: 50, height: 50)
+    centerMapImageView.translatesAutoresizingMaskIntoConstraints = false
+    
+    let singleTap = UITapGestureRecognizer(
+      target: self,
+      action: #selector(RestaurantTableWrapper.centerMapToUser)
+    )
+    singleTap.numberOfTapsRequired = 1
+    centerMapImageView.isUserInteractionEnabled = true
+    centerMapImageView.addGestureRecognizer(singleTap)
+    
+    mainMap.addSubview(centerMapImageView)
+    
+    NSLayoutConstraint.activate([
+      centerMapImageView.bottomAnchor.constraint(equalTo: mainMap.bottomAnchor, constant: -10),
+      centerMapImageView.trailingAnchor.constraint(equalTo: mainMap.trailingAnchor, constant: -10),
+      centerMapImageView.widthAnchor.constraint(equalToConstant: size.width),
+      centerMapImageView.heightAnchor.constraint(equalToConstant: size.height),
+    ])
+  }
+  
+  @objc func centerMapToUser(){
+    UIView.animate(withDuration: 0.1, animations: {
+      self.centerMapImageView.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+    }, completion: { _ in
+      UIView.animate(withDuration: 0.1, animations: {
+        self.centerMapImageView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+      }, completion: nil)
+    })
+    
+    mapManager?.centerMapToUser()
+  }
+
   func setupRefreshController(){
     let refreshControl = UIRefreshControl()
     restaurantTableViewController.refreshControl = refreshControl
@@ -97,12 +133,14 @@ class RestaurantTableWrapper: UIViewController {
       )
     }
     mapManager.addPins(pinsData)
+    mapManager.centerMapToUser()
   }
   
   @IBAction func onTap(_ sender: Any) {
     searchBarManager?.hideKeyboard()
   }
   
+  // MARK: setup event listeners
   func setupListeners() {
     // not sure what might happen here, let's lean on the safe side
     tearDownUnsubscribers()
