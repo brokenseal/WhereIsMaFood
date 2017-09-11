@@ -56,7 +56,6 @@ class RestaurantTableWrapper: UIViewController {
   }
   
   func addCenterMapImageView(){
-    let size = CGSize(width: 50, height: 50)
     centerMapImageView.translatesAutoresizingMaskIntoConstraints = false
     
     let singleTap = UITapGestureRecognizer(
@@ -72,8 +71,8 @@ class RestaurantTableWrapper: UIViewController {
     NSLayoutConstraint.activate([
       centerMapImageView.bottomAnchor.constraint(equalTo: mainMap.bottomAnchor, constant: -10),
       centerMapImageView.trailingAnchor.constraint(equalTo: mainMap.trailingAnchor, constant: -10),
-      centerMapImageView.widthAnchor.constraint(equalToConstant: size.width),
-      centerMapImageView.heightAnchor.constraint(equalToConstant: size.height),
+      centerMapImageView.widthAnchor.constraint(equalToConstant: 50),
+      centerMapImageView.heightAnchor.constraint(equalToConstant: 50),
     ])
   }
   
