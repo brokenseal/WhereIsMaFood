@@ -29,6 +29,8 @@ final class App {
     case locationAuthorizationStatusUpdated
     // message sent when an annotation view on a map is selected
     case annotationViewSelected
+    // message sent by the app delegate when it has entered foreground
+    case appEnteredForeground
 
     func getName() -> NSNotification.Name {
       return NSNotification.Name(rawValue: self.rawValue)
@@ -109,7 +111,7 @@ final class App {
     return unsubscriber
   }
 
-  func trigger(_ message: Message, object: Any) {
+  func trigger(_ message: Message, object: Any? = nil) {
     self.notificationsManager.post(
       name: message.getName(),
       object: object

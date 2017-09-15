@@ -38,7 +38,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       fatalError("Unable to instantiate App")
     }
     
-    startDebugger()
     setupCorrectStoryBoard(debug: false)
     
     return true
@@ -55,6 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     if debug {
       storyBoardToUse = AppDelegate.getDebugStoryboard()
+      startDebugger()
     } else if !AppDelegate.hasUserSeenIntroduction(){
       storyBoardToUse = AppDelegate.getIntroductionStoryboard()
       AppDelegate.setUserHasSeenIntroduction()
@@ -81,6 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func applicationWillEnterForeground(_ application: UIApplication) {
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+    App.main?.trigger(App.Message.appEnteredForeground)
   }
 
   func applicationDidBecomeActive(_ application: UIApplication) {

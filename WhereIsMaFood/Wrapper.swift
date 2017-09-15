@@ -143,7 +143,11 @@ class RestaurantTableWrapper: UIViewController {
   func setupListeners() {
     // not sure what might happen here, let's lean on the safe side
     tearDownUnsubscribers()
-    
+
+    unsubscribers.append(App.main.on(App.Message.appEnteredForeground) { _ in
+      self.refreshTable()
+    })
+
     // LISTENER: update table data when new restaurants data is received
     let dataSourceUnsubscriber = App.main.on(
       App.Message.newRestaurantsDataSet
