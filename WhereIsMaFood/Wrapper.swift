@@ -145,7 +145,10 @@ class RestaurantTableWrapper: UIViewController {
     tearDownUnsubscribers()
 
     unsubscribers.append(App.main.on(App.Message.appEnteredForeground) { _ in
-      self.refreshTable()
+      let onLocationUnsubscriber = App.main.once(App.Message.newLocation) { location in
+        self.refreshTable()
+      }
+      self.unsubscribers.append(onLocationUnsubscriber)
     })
 
     // LISTENER: update table data when new restaurants data is received
@@ -158,7 +161,7 @@ class RestaurantTableWrapper: UIViewController {
     }
     unsubscribers.append(dataSourceUnsubscriber)
     
-    // LISTENER: update map when a new location is received, but only once, at the beginning
+    // LISTENER: update map when a new location is received
     var firstLoad = true
     let newLocationUnsubscriber = App.main.on(
       App.Message.newLocation
