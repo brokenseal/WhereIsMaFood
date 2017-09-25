@@ -92,6 +92,10 @@ extension IntroductionPageViewController: UIPageViewControllerDataSource {
       return nil
     }
     
+    /*if nextIndex == orderedViewControllers.count - 1 {
+      AppDelegate.setUserHasSeenIntroduction()
+    }*/
+    
     return orderedViewControllers[nextIndex]
   }
   
@@ -132,6 +136,7 @@ class PageViewController: UIViewController {
 
     super.viewDidLoad()
   }
+  
   @IBAction func openGithub(_ sender: UIButton) {
     UIApplication.shared.open(URL(string: "https://github.com/brokenseal/WhereIsMaFood")!)
   }
