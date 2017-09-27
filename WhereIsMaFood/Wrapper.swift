@@ -53,6 +53,7 @@ class RestaurantTableWrapper: UIViewController {
   
   func start(){
     App.main.locationManager.initiate()
+    refreshTable()
   }
   
   func addCenterMapImageView(){

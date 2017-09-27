@@ -36,8 +36,10 @@ final class App {
       return NSNotification.Name(rawValue: self.rawValue)
     }
     
-    static let values = [warnUser, newRestaurantsDataSet, newLocation,
-                         locationAuthorizationStatusUpdated, annotationViewSelected]
+    static let values = [
+      warnUser, newRestaurantsDataSet, newLocation,
+      locationAuthorizationStatusUpdated, annotationViewSelected
+    ]
   }
   
   static func setup(

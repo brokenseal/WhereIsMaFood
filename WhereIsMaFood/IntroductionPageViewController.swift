@@ -92,9 +92,9 @@ extension IntroductionPageViewController: UIPageViewControllerDataSource {
       return nil
     }
     
-    /*if nextIndex == orderedViewControllers.count - 1 {
+    if nextIndex == orderedViewControllers.count - 1 {
       AppDelegate.setUserHasSeenIntroduction()
-    }*/
+    }
     
     return orderedViewControllers[nextIndex]
   }
